@@ -235,7 +235,6 @@ namespace TNT
 
         private void dgOrder_SelectionChanged(object sender, SelectionChangeEventArgs e)
         {
-            var test = (sender as RadGridView).Parent;
             rmiDelOrder.IsEnabled =  rmiUpdOrder.IsEnabled = ((sender as RadGridView).SelectedItem != null);
 
             child = (sender as RadGridView);

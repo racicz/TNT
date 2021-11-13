@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Telerik.Windows.Controls;
 using TNT.Helper;
 using TNT_Library;
 using TNT_Model;
@@ -140,6 +141,82 @@ namespace TNT.Views
         {
             if (IsDetailFormValid.Length == 0)
             {
+
+                if (dgDetail.SelectedItem != null && (dgDetail.SelectedItem as OrderDetail).FishTypeId == ordDetailBind.FishTypeId)
+                {
+                    var detail = details.Where(t => t.FishTypeId == ordDetailBind.FishTypeId).FirstOrDefault();
+
+                    if (detail != null)
+                    {
+                        detail.OrderDetailId = ordDetailBind.DetailId;
+                        detail.FishTypeId = ordDetailBind.FishTypeId;
+                        detail.FishType = new FishType()
+                        {
+                            Description = cboFishTypes.Text,
+                            Price = (cboFishTypes.SelectedItem as FishType).Price,
+                            Preparations = GetPreparationList
+                        };
+                        detail.StatusId = cboStatus.SelectedItem != null ? (cboStatus.SelectedItem as Status).StatusId : 1;
+                        detail.Status = new Status()
+                        {
+                            StatusId = cboStatus.SelectedItem != null ? (cboStatus.SelectedItem as Status).StatusId : 1,
+                            Description = ordDetailBind.Status
+                        };
+                        detail.OrderKg = ordDetailBind.OrderedKg;
+                        detail.PricePerKg = ordDetailBind.PricePerKg;
+                        detail.DeliveredKg = ordDetailBind.DeliveredKg;
+                        detail.Notes = ordDetailBind.Notes;
+                        detail.AmountDue = (ordDetailBind.PricePerKg * ordDetailBind.OrderedKg);
+                        detail.AmountPaid = (ordDetailBind.PricePerKg * ordDetailBind.DeliveredKg);
+                        detail.Preparations = GetPreparations;
+                        detail.Action = "U";
+                    }
+
+                    dgDetail.Rebind();
+
+                }
+                else
+                {
+                    details.Add(new OrderDetail()
+                    {
+                        OrderDetailId = 0,
+                        FishTypeId = ordDetailBind.FishTypeId,
+                        FishType = new FishType()
+                        {
+                            Description = cboFishTypes.Text,
+                            Price = (cboFishTypes.SelectedItem as FishType).Price,
+                            Preparations = GetPreparationList
+                        },
+                        StatusId = cboStatus.SelectedItem != null ? (cboStatus.SelectedItem as Status).StatusId : 1,
+                        Status = new Status()
+                        {
+                            StatusId = cboStatus.SelectedItem != null ? (cboStatus.SelectedItem as Status).StatusId : 1,
+                            Description = ordDetailBind.Status
+                        },
+                        OrderKg = ordDetailBind.OrderedKg,
+                        PricePerKg = ordDetailBind.PricePerKg,
+                        DeliveredKg = ordDetailBind.DeliveredKg,
+                        Notes = ordDetailBind.Notes,
+                        AmountDue = (ordDetailBind.PricePerKg * ordDetailBind.OrderedKg),
+                        AmountPaid = (ordDetailBind.PricePerKg * ordDetailBind.DeliveredKg),
+                        Preparations = GetPreparations,
+                        Action = "A"
+                    });
+                }
+
+                clearDetails();
+                ordDetailBind.Status = "Poručeno";
+
+            }
+            else
+                MessageBox.Show(IsDetailFormValid, "Nedostatak Informacija", MessageBoxButton.OK);
+
+        }
+
+        private void btnUpd_Click(object sender, RoutedEventArgs e)
+        {
+            if (IsDetailFormValid.Length == 0)
+            {
                 if (ordDetailBind.DetailId > 0)
                 {
                     var detail = details.Where(t => t.OrderDetailId == ordDetailBind.DetailId).FirstOrDefault();
@@ -171,79 +248,12 @@ namespace TNT.Views
                     }
 
                     dgDetail.Rebind();
+                    dgDetail.SelectedItem = null;
+                    ordDetailBind = null;
+                    ordDetailBind = new OrderDetailBinding();
+                    grdOrderDetail.DataContext = ordDetailBind;
                 }
-                else
-                {
-                    if (dgDetail.SelectedItem != null && (dgDetail.SelectedItem as OrderDetail).FishTypeId == ordDetailBind.FishTypeId)
-                    {
-                        var detail = details.Where(t => t.FishTypeId == ordDetailBind.FishTypeId).FirstOrDefault();
-
-                        if (detail != null)
-                        {
-                            detail.OrderDetailId = ordDetailBind.DetailId;
-                            detail.FishTypeId = ordDetailBind.FishTypeId;
-                            detail.FishType = new FishType()
-                            {
-                                Description = cboFishTypes.Text,
-                                Price = (cboFishTypes.SelectedItem as FishType).Price,
-                                Preparations = GetPreparationList
-                            };
-                            detail.StatusId = cboStatus.SelectedItem != null ? (cboStatus.SelectedItem as Status).StatusId : 1;
-                            detail.Status = new Status()
-                            {
-                                StatusId = cboStatus.SelectedItem != null ? (cboStatus.SelectedItem as Status).StatusId : 1,
-                                Description = ordDetailBind.Status
-                            };
-                            detail.OrderKg = ordDetailBind.OrderedKg;
-                            detail.PricePerKg = ordDetailBind.PricePerKg;
-                            detail.DeliveredKg = ordDetailBind.DeliveredKg;
-                            detail.Notes = ordDetailBind.Notes;
-                            detail.AmountDue = (ordDetailBind.PricePerKg * ordDetailBind.OrderedKg);
-                            detail.AmountPaid = (ordDetailBind.PricePerKg * ordDetailBind.DeliveredKg);
-                            detail.Preparations = GetPreparations;
-                        }
-
-                        dgDetail.Rebind();
-
-                    }
-                    else
-                    {
-                        details.Add(new OrderDetail()
-                        {
-                            OrderDetailId = 0,
-                            FishTypeId = ordDetailBind.FishTypeId,
-                            FishType = new FishType()
-                            {
-                                Description = cboFishTypes.Text,
-                                Price = (cboFishTypes.SelectedItem as FishType).Price,
-                                Preparations = GetPreparationList
-                            },
-                            StatusId = cboStatus.SelectedItem != null ? (cboStatus.SelectedItem as Status).StatusId : 1,
-                            Status = new Status()
-                            {
-                                StatusId = cboStatus.SelectedItem != null ? (cboStatus.SelectedItem as Status).StatusId : 1,
-                                Description = ordDetailBind.Status
-                            },
-                            OrderKg = ordDetailBind.OrderedKg,
-                            PricePerKg = ordDetailBind.PricePerKg,
-                            DeliveredKg = ordDetailBind.DeliveredKg,
-                            Notes = ordDetailBind.Notes,
-                            AmountDue = (ordDetailBind.PricePerKg * ordDetailBind.OrderedKg),
-                            AmountPaid = (ordDetailBind.PricePerKg * ordDetailBind.DeliveredKg),
-                            Preparations = GetPreparations,
-                            Action = "A"
-                        });
-                    }
-                    
-                }
-
-                clearDetails();
-                ordDetailBind.Status = "Poručeno";
-
             }
-            else
-                MessageBox.Show(IsDetailFormValid, "Nedostatak Informacija", MessageBoxButton.OK);
-
         }
 
         string GetPreparations
@@ -535,14 +545,14 @@ namespace TNT.Views
                 ordDetailBind.FishTypeId = fid;
                 setFishTypeSelected = (dgDetail.SelectedItem as OrderDetail).FishType;
                 ordDetailBind.DetailId = (dgDetail.SelectedItem as OrderDetail).OrderDetailId;
-                ordDetailBind.OrderedKg = (dgDetail.SelectedItem as OrderDetail).OrderKg;
-                ordDetailBind.DeliveredKg = (dgDetail.SelectedItem as OrderDetail).DeliveredKg;
-                ordDetailBind.PricePerKg = (dgDetail.SelectedItem as OrderDetail).FishType.Price;
+                ordDetailBind.OrderedKg = Convert.ToDecimal((dgDetail.SelectedItem as OrderDetail).OrderKg.ToString("#.00"));
+                ordDetailBind.DeliveredKg = Convert.ToDecimal((dgDetail.SelectedItem as OrderDetail).DeliveredKg.ToString("#.00"));
+                ordDetailBind.PricePerKg = Convert.ToDecimal((dgDetail.SelectedItem as OrderDetail).PricePerKg.ToString("#.00"));
                 ordDetailBind.Notes = (dgDetail.SelectedItem as OrderDetail).Notes;
                 ordDetailBind.Status = (dgDetail.SelectedItem as OrderDetail).Status.Description;
 
                 btnDel.Visibility = Visibility.Visible;
-                btnAdd.Content = "Azuriraj";
+                btnUpd.Visibility = Visibility.Visible;
             }
         }
 

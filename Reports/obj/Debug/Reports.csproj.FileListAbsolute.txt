@@ -23,3 +23,6 @@ C:\Projects\TNT\Reports\obj\Debug\Reports.csproj.CoreCompileInputs.cache
 C:\Projects\TNT\Reports\obj\Debug\Reports.csproj.CopyComplete
 C:\Projects\TNT\Reports\obj\Debug\Reports.dll
 C:\Projects\TNT\Reports\obj\Debug\Reports.pdb
+C:\Projects\TNT\Reports\bin\Debug\Telerik.Reporting.dll
+C:\Projects\TNT\Reports\bin\Debug\Telerik.Reporting.pdb
+C:\Projects\TNT\Reports\bin\Debug\Telerik.Reporting.xml

@@ -37,6 +37,7 @@ namespace TNT_Model
                         new SqlMetaData("FishName", System.Data.SqlDbType.VarChar,50),
                         new SqlMetaData("StatusId", System.Data.SqlDbType.Int),
                         new SqlMetaData("OrderKg", System.Data.SqlDbType.Decimal, 12, 2),
+                        new SqlMetaData("PricePerKg", System.Data.SqlDbType.Decimal, 12, 2),
                         new SqlMetaData("DeliveredKg", System.Data.SqlDbType.Decimal, 12, 2),
                         new SqlMetaData("Notes", System.Data.SqlDbType.VarChar, -1),
                         new SqlMetaData("AmountDue", System.Data.SqlDbType.Decimal, 12, 2),
@@ -53,12 +54,13 @@ namespace TNT_Model
                 rec.SetString(2, det.FishType.Description ?? string.Empty);
                 rec.SetInt32(3, det.StatusId);
                 rec.SetDecimal(4, det.OrderKg);
-                rec.SetDecimal(5, det.DeliveredKg);
-                rec.SetString(6, det.Notes ?? string.Empty);
-                rec.SetDecimal(7, det.AmountDue);
-                rec.SetDecimal(8, det.AmountPaid);
-                rec.SetString(9, det.Preparations ?? string.Empty);
-                rec.SetString(10, det.Action ?? string.Empty);
+                rec.SetDecimal(5, det.PricePerKg);
+                rec.SetDecimal(6, det.DeliveredKg);
+                rec.SetString(7, det.Notes ?? string.Empty);
+                rec.SetDecimal(8, det.AmountDue);
+                rec.SetDecimal(9, det.AmountPaid);
+                rec.SetString(10, det.Preparations ?? string.Empty);
+                rec.SetString(11, det.Action ?? string.Empty);
                 yield return rec;
             }
         }

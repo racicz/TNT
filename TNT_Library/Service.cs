@@ -430,7 +430,7 @@ namespace TNT_Library
             {
                 using (cnn = new SqlConnection(strConn))
                 {
-                    using (cmd = new SqlCommand(string.Format(@"SELECT OrderDetailId, OrderKg, DeliveredKg, AmountDue, 
+                    using (cmd = new SqlCommand(string.Format(@"SELECT OrderDetailId, OrderKg, PricePerKg, DeliveredKg, AmountDue, 
                                                                         AmountPaid, FishType.FishTypeId, FishType.Description [FishType], 
                                                                         Status.StatusId, Status.Description [Status], OrderDetail.Notes
                                                                     FROM OrderDetail inner join
@@ -449,6 +449,7 @@ namespace TNT_Library
                             {
                                 OrderDetailId = Convert.ToInt32(dr["OrderDetailId"]),
                                 OrderKg = dr["OrderKg"] != DBNull.Value ? Convert.ToDecimal(dr["OrderKg"], ci) : 0,
+                                PricePerKg = dr["PricePerKg"] != DBNull.Value ? Convert.ToDecimal(dr["PricePerKg"], ci) : 0,
                                 DeliveredKg = dr["DeliveredKg"] != DBNull.Value ? Convert.ToDecimal(dr["DeliveredKg"], ci) : 0,
                                 AmountDue = dr["AmountDue"] != DBNull.Value ? Convert.ToDecimal(dr["AmountDue"], ci) : 0,
                                 AmountPaid = dr["AmountPaid"] != DBNull.Value ? Convert.ToDecimal(dr["AmountPaid"], ci) : 0,

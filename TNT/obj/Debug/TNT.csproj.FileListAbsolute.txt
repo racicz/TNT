@@ -60,7 +60,6 @@ C:\Projects\TNT\TNT\bin\Debug\Reports.dll.config
 C:\Projects\TNT\TNT\bin\Debug\TNT_Library.pdb
 C:\Projects\TNT\TNT\bin\Debug\TNT_Model.pdb
 C:\Projects\TNT\TNT\obj\Debug\TNT.csproj.AssemblyReference.cache
-C:\Projects\TNT\TNT\obj\Debug\TNT.exe.config
 C:\Projects\TNT\TNT\obj\Debug\Themes\OfficeBlack\System.Windows.baml
 C:\Projects\TNT\TNT\obj\Debug\Themes\OfficeBlack\Telerik.ReportViewer.Wpf.baml
 C:\Projects\TNT\TNT\obj\Debug\Themes\OfficeBlack\Telerik.Windows.Controls.Input.baml

@@ -177,12 +177,8 @@ namespace TNT.Helper
             get { return priceperkg; }
             set
             {
-                if (value != priceperkg)
-                {
-                    priceperkg = value;
-                    OnPropertyChanged("PricePerKg");
-                }
-
+                priceperkg = value;
+                OnPropertyChanged("PricePerKg");
             }
         }
 

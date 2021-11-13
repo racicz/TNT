@@ -202,12 +202,13 @@
                 <StackPanel Grid.Row="2" Orientation="Vertical" Margin="5">
                     <TextBlock Text="Poručena kg" Foreground="LightGray"/>
                     <telerik:RadMaskedNumericInput Name="txtOrderKg"  Culture="sr-Latn" AllowSkipPlaceholders="True" HorizontalAlignment="Stretch" Background="NavajoWhite"
-                                                   Value="{Binding OrderedKg, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" IsManipulationEnabled="True" Mask="#9.3"/>
+                                                   Value="{Binding OrderedKg, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" IsManipulationEnabled="True" Mask="#4.2"/>
                 </StackPanel>
 
                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" Margin="5" >
                     <TextBlock Text="Cena 1 kg" Foreground="LightGray"/>
-                    <telerik:RadMaskedCurrencyInput Value="{Binding PricePerKg, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" Culture="sr-Cyrl" Background="NavajoWhite" HorizontalAlignment="Stretch"/>
+                    <telerik:RadMaskedCurrencyInput Value="{Binding PricePerKg, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" Mask="#6.2"
+                                                        Culture="sr-Latn" Background="NavajoWhite" HorizontalAlignment="Stretch"/>
                     
                 </StackPanel>
 
@@ -238,11 +239,14 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 
-                <Button Name="btnDel" Content="Izbrisi" Width="75" HorizontalAlignment="Right" Margin="5"  Cursor="Hand" Grid.Column="1"
+                <Button Name="btnDel" Content="Izbriši" Width="75" HorizontalAlignment="Right" Margin="5"  Cursor="Hand" Grid.Column="1"
                     Click="btnDel_Click" Style="{StaticResource GreenButton}" Visibility="Collapsed"/>
-                <Button Name="btnAdd" Content="Dodaj" Width="75" HorizontalAlignment="Right" Margin="5"  Cursor="Hand" Grid.Column="2"
+                <Button Name="btnUpd" Content="Ažuriraj" Width="75" HorizontalAlignment="Right" Margin="5"  Cursor="Hand" Grid.Column="2"
+                    Click="btnUpd_Click" Style="{StaticResource GreenButton}" Visibility="Collapsed"/>
+                <Button Name="btnAdd" Content="Dodaj" Width="75" HorizontalAlignment="Right" Margin="5"  Cursor="Hand" Grid.Column="3"
                     Click="btnAdd_Click" Style="{StaticResource GreenButton}"/>
                 
             </Grid>
@@ -267,9 +271,9 @@
 
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn Header="Vrsta Ribe" DataMemberBinding="{Binding FishType.Description}"  IsReadOnly="True" Width="1.5*"/>
-                <telerik:GridViewDataColumn Header="Poručeno KG" DataMemberBinding="{Binding OrderKg}"  IsReadOnly="True" Width="*"/>
-                <telerik:GridViewDataColumn Header="Cena KG" DataMemberBinding="{Binding PricePerKg}"  HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right" IsReadOnly="True" Width="*"/>
-                <telerik:GridViewDataColumn Header="Poručeno RSD" DataMemberBinding="{Binding AmountDue}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right"  IsReadOnly="True" Width="*">
+                <telerik:GridViewDataColumn Header="Poručeno KG" DataMemberBinding="{Binding OrderKg}" DataFormatString="{}{0:N2}"  IsReadOnly="True" Width="*"/>
+                <telerik:GridViewDataColumn Header="Cena 1 KG" DataMemberBinding="{Binding PricePerKg}"  DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right" IsReadOnly="True" Width="*"/>
+                <telerik:GridViewDataColumn Header="Poručeno RSD" DataMemberBinding="{Binding AmountDue}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right"  IsReadOnly="True" Width="*">
                     <telerik:GridViewDataColumn.AggregateFunctions>
                         <telerik:SumFunction  SourceField="AmountDue"/>
                     </telerik:GridViewDataColumn.AggregateFunctions>

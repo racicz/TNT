@@ -322,6 +322,7 @@
 
                         <telerik:RadGridView.Columns>
                             <telerik:GridViewDataColumn Header="Poručeno KG" DataMemberBinding="{Binding OrderKg}" HeaderTextAlignment="Right" TextAlignment="Right" IsReadOnly="True" Width="*"/>
+                            <telerik:GridViewDataColumn Header="Cena 1 KG" DataMemberBinding="{Binding PricePerKg}" HeaderTextAlignment="Right" TextAlignment="Right" IsReadOnly="True" Width="*"/>
                             <telerik:GridViewDataColumn Header="Poručeno RSD" DataMemberBinding="{Binding AmountDue}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right"  IsReadOnly="True" Width="*">
                                 <telerik:GridViewDataColumn.AggregateFunctions>
                                     <telerik:SumFunction  SourceField="AmountDue"/>
