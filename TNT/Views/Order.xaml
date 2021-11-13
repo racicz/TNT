@@ -1,0 +1,300 @@
+﻿<Window xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"  x:Class="TNT.Views.Order"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:telerikData="clr-namespace:Telerik.Windows.Data;assembly=Telerik.Windows.Data"
+        xmlns:local="clr-namespace:TNT.Views"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="768" 
+        Title="Nova Poruđžbina" Width="1200" Height="800" WindowStartupLocation="CenterScreen" Icon="/TNT;component/Fish.ico">
+
+    <Window.Resources>
+        <DataTemplate x:Key="SelectionBoxContact">
+            <Grid>
+                <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ComboContactTemplate">
+            <Grid Margin="0 3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="2*"/>
+                    <ColumnDefinition  Width="*"/>
+                    <ColumnDefinition  Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Foreground="#003366" Text="{Binding Person.Name}" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="{Binding Person.Town}"/>
+                <TextBlock Grid.Column="2" Text="{Binding Contact.ContactValue}"/>
+                
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="SelectionBoxFishType">
+            <Grid>
+                <TextBlock Text="{Binding Description}" FontWeight="Bold"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ComboFishTypeTemplate">
+            <Grid Margin="0 3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="2*"/>
+                    <ColumnDefinition  Width="*"/>
+                    <ColumnDefinition  Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Foreground="#003366" Text="{Binding Description}" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="{Binding Price}"/>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="../Styles/background.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="LightGray" BorderThickness="1" Margin="0,0,0,5">
+            <Grid Name="grdOrder">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Broj Poruđžbine" Foreground="LightGray"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBox Name="txtOrderNo" Background="NavajoWhite" Text="{Binding OrderNumber, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}"/>
+                        <Button Name="btnNewNumber" Content="Novi Broj" Style="{StaticResource GreenButton}" HorizontalAlignment="Right" Cursor="Hand" Grid.Column="1" Margin="5,0,0,0" Click="btnNewNumber_Click"/>
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Datum Poruđžbine" VerticalAlignment="Center" Foreground="LightGray" />
+                    <telerik:RadDatePicker Name="dtOrder" DateTimeWatermarkContent="Unesi datum" Grid.Column="1" Culture="sr-Latn" Background="NavajoWhite"
+                                           SelectedDate="{Binding OrderDate, Mode=TwoWay, NotifyOnValidationError=True}" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Vreme Poruđžbine" VerticalAlignment="Center" Foreground="LightGray" />
+                    <telerik:RadTimePicker Name="dtOrderTime" Culture="sr-Latn" DateTimeWatermarkContent="Unesi vreme" Background="NavajoWhite"
+                                           SelectedValue="{Binding OrderTime, Mode=TwoWay, NotifyOnValidationError=True}"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="1" Grid.Column="0"  Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Ime I Prezime" Foreground="LightGray"/>
+                    <telerik:RadComboBox Name="cboContact" IsEditable="True" Cursor="Hand" Background="NavajoWhite"
+                                         SelectedValuePath="Person.Name"
+                                         telerik:TextSearch.TextPath="Person.Name"
+                                         ItemTemplate="{StaticResource ComboContactTemplate}"
+                                         SelectionBoxTemplate="{StaticResource SelectionBoxContact}"
+                                         Text="{Binding Name, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"
+                                         DropDownClosed="cboContact_DropDownClosed"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Datum Isporuke" VerticalAlignment="Center" Foreground="LightGray" />
+                    <telerik:RadDatePicker DateTimeWatermarkContent="Unesi datum" Name="dpBillStart" Grid.Column="1" Culture="sr-Latn" Background="NavajoWhite"
+                                           SelectedValue="{Binding DeliveryDate, Mode=TwoWay, NotifyOnValidationError=True}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Vreme Isporuke" VerticalAlignment="Center" Foreground="LightGray" />
+                    <telerik:RadTimePicker Culture="sr-Latn" DateTimeWatermarkContent="Unesi vreme" Background="NavajoWhite"
+                                           SelectedValue="{Binding DeliveryTime, Mode=TwoWay, NotifyOnValidationError=True}"/>
+                </StackPanel>
+
+
+                <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Mesto" Foreground="LightGray"/>
+                    <telerik:RadComboBox Name="cboTowns" IsEditable="True" DisplayMemberPath="TownName" Cursor="Hand" SelectedValuePath="TownId" 
+                                         Text="{Binding Town, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Fiksni Telefon" Foreground="LightGray"/>
+                    <telerik:RadMaskedTextInput HorizontalAlignment="Stretch"
+                                                Value="{Binding HomePhone, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="2" Grid.Row="2" Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Mobilni Telefon" Foreground="LightGray"/>
+                    <telerik:RadMaskedTextInput Mask="###-###-####" FormatString="###-###-####" HorizontalAlignment="Stretch"
+                                                Value="{Binding CellPhone, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}"/>
+                </StackPanel>
+
+                
+            </Grid>
+        </Border>
+        <Border Grid.Row="1" BorderBrush="LightGray" BorderThickness="1">
+            <Grid Name="grdOrderDetail">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Vertical" Margin="5" Grid.ColumnSpan="2">
+                    <TextBlock Text="Vrsta Ribe" Foreground="LightGray"/>
+                    <telerik:RadComboBox Name="cboFishTypes" IsEditable="True" Cursor="Hand" SelectedValuePath="FishTypeId" Background="NavajoWhite"
+                                         telerik:TextSearch.TextPath="Description"
+                                         ItemTemplate="{StaticResource ComboFishTypeTemplate}"
+                                         SelectionBoxTemplate="{StaticResource SelectionBoxFishType}"
+                                         SelectedValue="{Binding FishTypeId, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"
+                                         DropDownClosed="cboFishTypes_DropDownClosed"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Način Pripreme" Foreground="LightGray"/>
+                    <Border Grid.Row="1" BorderBrush="LightGray" BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <CheckBox Content="Pržena" Foreground="LightGray"
+                                      IsChecked="{Binding Przena,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
+                            <CheckBox Grid.Column="1" Content="Dimljena" Foreground="LightGray"
+                                      IsChecked="{Binding Dimljena,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
+                            <CheckBox Grid.Row="1" Content="Orli (Pohovana)" Foreground="LightGray"
+                                      IsChecked="{Binding Pohovana,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
+                            <CheckBox Grid.Row="1" Grid.Column="1" Content="Sveža" Foreground="LightGray"
+                                      IsChecked="{Binding Sveza,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
+                            <CheckBox Grid.Row="2" Content="Očišćena" Foreground="LightGray"
+                                      IsChecked="{Binding Ociscena,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="2" Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Poručena kg" Foreground="LightGray"/>
+                    <telerik:RadMaskedNumericInput Name="txtOrderKg"  Culture="sr-Latn" AllowSkipPlaceholders="True" HorizontalAlignment="Stretch" Background="NavajoWhite"
+                                                   Value="{Binding OrderedKg, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" IsManipulationEnabled="True" Mask="#9.3"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" Margin="5" >
+                    <TextBlock Text="Cena 1 kg" Foreground="LightGray"/>
+                    <telerik:RadMaskedCurrencyInput Value="{Binding PricePerKg, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" Culture="sr-Cyrl" Background="NavajoWhite" HorizontalAlignment="Stretch"/>
+                    
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Isporučena kg" Foreground="LightGray"/>
+                    <telerik:RadMaskedNumericInput Culture="sr-Latn" AllowSkipPlaceholders="True" HorizontalAlignment="Stretch"
+                                                   Value="{Binding DeliveredKg, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" IsManipulationEnabled="True" Text="___.___.__0,000" Mask="#9.3"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Orientation="Vertical" Margin="5" Grid.ColumnSpan="3">
+                    <TextBlock Text="Beleške" Foreground="LightGray"/>
+                    <TextBox TextWrapping="Wrap" AcceptsReturn="True" MinHeight="50" VerticalAlignment="Stretch" TextAlignment="Left" VerticalContentAlignment="Top"
+                             Text="{Binding Notes, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}"/>
+                </StackPanel>
+
+                
+
+                <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Vertical" Margin="5" >
+                    <TextBlock Text="Status" Foreground="LightGray"/>
+                    <telerik:RadComboBox Name="cboStatus" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Description" Cursor="Hand" SelectedValuePath="Description" Background="NavajoWhite"
+                                         Text="{Binding Status, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Border Grid.Row="2">
+            <Grid   Cursor="Hand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Name="btnDel" Content="Izbrisi" Width="75" HorizontalAlignment="Right" Margin="5"  Cursor="Hand" Grid.Column="1"
+                    Click="btnDel_Click" Style="{StaticResource GreenButton}" Visibility="Collapsed"/>
+                <Button Name="btnAdd" Content="Dodaj" Width="75" HorizontalAlignment="Right" Margin="5"  Cursor="Hand" Grid.Column="2"
+                    Click="btnAdd_Click" Style="{StaticResource GreenButton}"/>
+                
+            </Grid>
+        </Border>
+        <telerik:RadGridView Name="dgDetail" AutoGenerateColumns="False" ItemsSource="{Binding}"
+                                         ShowGroupPanel="False" VerticalAlignment="Stretch"  Grid.Row="3"
+                                         Margin="5" IsFilteringAllowed="True" CanUserDeleteRows="False"
+                                         Cursor="Hand" IsSynchronizedWithCurrentItem="False" ShowColumnFooters="False"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                         SelectionChanged="dgDetail_SelectionChanged">
+
+            <telerik:RadGridView.FilterDescriptors>
+                <telerikData:FilterDescriptor Member="Action"
+                                                          Operator="DoesNotContain"
+                                                          Value="D"
+                                                          IsCaseSensitive="False"/>
+            </telerik:RadGridView.FilterDescriptors>
+
+            <telerik:RadGridView.Resources>
+                <Style TargetType="TextBlock"/>
+            </telerik:RadGridView.Resources>
+
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn Header="Vrsta Ribe" DataMemberBinding="{Binding FishType.Description}"  IsReadOnly="True" Width="1.5*"/>
+                <telerik:GridViewDataColumn Header="Poručeno KG" DataMemberBinding="{Binding OrderKg}"  IsReadOnly="True" Width="*"/>
+                <telerik:GridViewDataColumn Header="Cena KG" DataMemberBinding="{Binding PricePerKg}"  HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right" IsReadOnly="True" Width="*"/>
+                <telerik:GridViewDataColumn Header="Poručeno RSD" DataMemberBinding="{Binding AmountDue}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right"  IsReadOnly="True" Width="*">
+                    <telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:SumFunction  SourceField="AmountDue"/>
+                    </telerik:GridViewDataColumn.AggregateFunctions>
+                    <telerik:GridViewDataColumn.Footer>
+                        <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding FormattedValue}"/>
+                    </telerik:GridViewDataColumn.Footer>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="Status" DataMemberBinding="{Binding Status.Description}"  IsReadOnly="True" Width="*"/>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        <Border Grid.Row="4">
+            <Grid   Cursor="Hand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Name="btnSave" Content="Sačuvaj"  Width="75" HorizontalAlignment="Right" Margin="5"  Height="25" Cursor="Hand"
+                    Click="btnSave_Click" Style="{StaticResource GreenButton}"/>
+
+                <Button Name="btnClose" Content="Zatvori"  Width="75" HorizontalAlignment="Right" Margin="5" Grid.Column="2" Height="25" Cursor="Hand"
+                    Click="btnClose_Click" Style="{StaticResource GreenButton}"/>
+            </Grid>
+        </Border>
+        
+    </Grid>
+</Window>

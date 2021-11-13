@@ -1,0 +1,19 @@
+﻿<Window x:Class="TNT.ReportViewer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:TNT"
+    xmlns:tr="http://schemas.telerik.com/wpf"
+    xmlns:telerikReporting="clr-namespace:Telerik.Reporting;assembly=Telerik.Reporting"
+    Title="Izvestaj" WindowState="Maximized">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid Margin="20" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <tr:ReportViewer Grid.Row="0" x:Name="rvReport" HorizontalAlignment="Stretch" ZoomMode="PageWidth"/>
+
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,11 @@
+F:\Projects\NET\VS2015\TNT\TNT_Model\bin\Release\TNT_Model.dll
+F:\Projects\NET\VS2015\TNT\TNT_Model\bin\Release\TNT_Model.pdb
+F:\Projects\NET\VS2015\TNT\TNT_Model\obj\Release\TNT_Model.csprojResolveAssemblyReference.cache
+F:\Projects\NET\VS2015\TNT\TNT_Model\obj\Release\TNT_Model.dll
+F:\Projects\NET\VS2015\TNT\TNT_Model\obj\Release\TNT_Model.pdb
+C:\Projects\TNT\TNT_Model\bin\Release\TNT_Model.dll
+C:\Projects\TNT\TNT_Model\bin\Release\TNT_Model.pdb
+C:\Projects\TNT\TNT_Model\obj\Release\TNT_Model.csproj.AssemblyReference.cache
+C:\Projects\TNT\TNT_Model\obj\Release\TNT_Model.csproj.CoreCompileInputs.cache
+C:\Projects\TNT\TNT_Model\obj\Release\TNT_Model.dll
+C:\Projects\TNT\TNT_Model\obj\Release\TNT_Model.pdb

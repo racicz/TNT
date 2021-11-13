@@ -1,0 +1,4 @@
+System.InvalidCastException: Object cannot be cast from DBNull to other types.
+   at System.DBNull.System.IConvertible.ToInt32(IFormatProvider provider)
+   at System.Convert.ToInt32(Object value)
+   at TNT_Library.Service.get_GetContacts() in F:\Projects\NET\VS2015\TNT\TNT_Library\Service.cs:line 300

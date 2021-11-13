@@ -1,0 +1,121 @@
+﻿<Window x:Class="TNT.Views.FishPrice"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TNT.Views"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:telerikData="clr-namespace:Telerik.Windows.Data;assembly=Telerik.Windows.Data"
+        mc:Ignorable="d"
+        Title="Cena Ribe" Height="500" Width="650" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <DataTemplate x:Key="SelectionBoxPreparation">
+            <Grid>
+                <TextBlock Text="{Binding Description}" FontWeight="Bold"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ComboPreparationTemplate">
+            <Grid Margin="0 3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="Auto"/>
+                    <ColumnDefinition  Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" Margin="5,0"/>
+                <TextBlock Grid.Column="1" Text="{Binding Description}" FontWeight="Bold"/>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="../Styles/background.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Orientation="Vertical" Margin="5">
+            <TextBlock Text="Vrsta Ribe" Foreground="LightGray"/>
+            <TextBox Name="txtFish" Background="NavajoWhite"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1"  Orientation="Vertical" Margin="5">
+            <TextBlock Text="Priprema" Foreground="LightGray"/>
+            <telerik:RadComboBox Name="cboPreparations" IsEditable="True" Cursor="Hand" Background="NavajoWhite"
+                                         SelectedValuePath="PreparationId"
+                                         telerik:TextSearch.TextPath="Description"
+                                         ItemTemplate="{StaticResource ComboPreparationTemplate}"
+                                         SelectionBoxTemplate="{StaticResource SelectionBoxPreparation}"
+                                 DropDownClosed="cboPreparations_DropDownClosed"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="2" Orientation="Vertical" Margin="5" >
+            <TextBlock Text="Cena 1 kg" Foreground="LightGray"/>
+            <telerik:RadMaskedCurrencyInput Name="txtPrice" Culture="sr-Cyrl" Background="NavajoWhite" HorizontalAlignment="Stretch"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Margin="5" Grid.Column="3">
+            <Button Name="btnAdd" Style="{StaticResource GreenButton}" Content="Dodaj" Width="75" VerticalAlignment="Bottom"  Cursor="Hand" Click="btnAdd_Click"/>
+            <Button Name="btnUpd" Style="{StaticResource GreenButton}" Content="Azuriraj" Width="75" Margin="0,5,0,0" VerticalAlignment="Bottom"  Cursor="Hand" Click="btnUpd_Click"/>
+        </StackPanel>
+        
+        
+        <telerik:RadGridView Name="dgDetail" AutoGenerateColumns="False" ItemsSource="{Binding}"
+                                         ShowGroupPanel="False" VerticalAlignment="Stretch"  Grid.Row="1" Grid.ColumnSpan="4"
+                                         Margin="5" IsFilteringAllowed="True" CanUserDeleteRows="False"
+                                         Cursor="Hand" IsSynchronizedWithCurrentItem="False" ShowColumnFooters="False"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                         SelectionChanged="dgDetail_SelectionChanged">
+
+
+            <telerik:RadGridView.Resources>
+                <Style TargetType="TextBlock"/>
+            </telerik:RadGridView.Resources>
+
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn Header="Vrsta Ribe" DataMemberBinding="{Binding Description}"  IsReadOnly="True" Width="1.5*"/>
+                <telerik:GridViewComboBoxColumn Header="Priprema" DataMemberBinding="{Binding PrepSelected}" 
+                                                    ItemsSourceBinding="{Binding Preparations}" DisplayMemberPath="Description"
+                                                    SelectedValueMemberPath="Description" EditTriggers="CellClick"  Width="*">
+                    <telerik:GridViewComboBoxColumn.EditorStyle>
+                        <Style TargetType="telerik:RadComboBox">
+                            <Setter Property="OpenDropDownOnFocus" Value="True"/>
+                        </Style>
+                    </telerik:GridViewComboBoxColumn.EditorStyle>
+                    <telerik:GridViewComboBoxColumn.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Description}" Margin="0,0,5,0"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Count}" Foreground="Red" FontWeight="Bold"/>
+                            </Grid>
+                        </DataTemplate>
+                    </telerik:GridViewComboBoxColumn.ItemTemplate>
+                </telerik:GridViewComboBoxColumn>
+                <telerik:GridViewDataColumn Header="Cena 1 Kg" DataMemberBinding="{Binding Price}"  IsReadOnly="True" Width="*"/>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Margin="0,5" Grid.Column="3" Grid.Row="2">
+            <Button Name="btnClose" Style="{StaticResource GreenButton}" Content="Zatvori" Width="75" VerticalAlignment="Bottom"  Cursor="Hand" Click="btnClose_Click"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5" Grid.Column="2" Grid.Row="2">
+            <Button Name="btnDel" Style="{StaticResource GreenButton}" Content="Izbrisi" Width="75" VerticalAlignment="Bottom"  Cursor="Hand" Click="btnDel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

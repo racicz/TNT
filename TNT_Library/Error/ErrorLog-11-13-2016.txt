@@ -1,0 +1,2 @@
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at TNT_Library.Service.IsOrderSaved(Order order) in F:\Projects\NET\VS2015\TNT\TNT_Library\Service.cs:line 538

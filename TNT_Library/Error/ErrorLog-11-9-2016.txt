@@ -1,0 +1,4 @@
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Select[TSource,TResult](IEnumerable`1 source, Func`2 selector)
+   at TNT_Library.Service.IsFishTypeSaved(FishType type) in F:\Projects\NET\VS2015\TNT\TNT_Library\Service.cs:line 530
