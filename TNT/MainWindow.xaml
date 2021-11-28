@@ -76,7 +76,7 @@
                                         Style="{StaticResource GreenButton}" Margin="5">
                     <DockPanel>
                         <Image Width="24" Height="24" Source="Styles/Gear.png"
-						                        ToolTipService.ToolTip="Odstampaj izvestaj" />
+						                        ToolTipService.ToolTip="OdŠtampaj izveštaj" />
 
                         <TextBlock Text="Opcije" Margin="5,0,0,0" VerticalAlignment="Center"/>
 
@@ -85,8 +85,8 @@
                                 <telerik:RadContextMenu.Items>
                                     <telerik:RadMenuItem Name="rmiNewAccount" Header="Cena Ribe" Click="rmiNewAccount_Click"/>
                                     <telerik:RadMenuItem Name="rmiStatusChange" Header="Promeni Status">
-                                        <telerik:RadMenuItem Name="rmiIspo" Header="Isporuceno" Click="rmiIspo_Click"/>
-                                        <telerik:RadMenuItem Name="rmiIspoPaid" Header="Isporuceno - Placeno" Click="rmiIspoPaid_Click"/>
+                                        <telerik:RadMenuItem Name="rmiIspo" Header="Isporučeno" Click="rmiIspo_Click"/>
+                                        <telerik:RadMenuItem Name="rmiIspoPaid" Header="Isporučeno - Plaćeno" Click="rmiIspoPaid_Click"/>
                                         <telerik:RadMenuItem Name="rmiCancel" Header="Otkazano" Click="rmiCancel_Click"/>
                                     </telerik:RadMenuItem>
                                     <telerik:RadMenuSeparatorItem/>
@@ -99,13 +99,13 @@
                                                 </StackPanel>
 
                                                 <StackPanel>
-                                                    <telerik:RadMenuItem Header="Datum"/>
+                                                    <telerik:RadMenuItem Header="Datum Isporuke"/>
                                                     <telerik:RadDatePicker Name="dpTo" DateTimeWatermarkContent="Unesi datum" Culture="sr-Latn" DropDownClosed="dpTo_DropDownClosed"/>
 
                                                 </StackPanel>
                                             </StackPanel>
                                         </telerik:RadMenuItem>
-                                        <telerik:RadMenuItem Header="Poruceno">
+                                        <telerik:RadMenuItem Header="Poručeno">
                                             <StackPanel Orientation="Horizontal">
                                                 <StackPanel Margin="0,0,5,0">
                                                     <telerik:RadMenuItem Header="Vreme"/>
@@ -113,7 +113,7 @@
                                                 </StackPanel>
 
                                                 <StackPanel>
-                                                    <telerik:RadMenuItem Header="Datum"/>
+                                                    <telerik:RadMenuItem Header="Datum Isporuke"/>
                                                     <telerik:RadDatePicker Name="dpDetDate" DateTimeWatermarkContent="Unesi datum" Culture="sr-Latn" DropDownClosed="dpDetDate_DropDownClosed"/>
 
                                                 </StackPanel>
@@ -258,8 +258,8 @@
                         <telerik:RadMenuItem  Header="Nova Poruđžbina" Click="rmiNewOrder_Click"/>
                         <telerik:RadMenuItem  Header="Azuriraj Poruđžbinu" Click="rmiUpdOrder_Click"/>
                         <telerik:RadMenuItem  Header="Promeni Status">
-                            <telerik:RadMenuItem  Header="Isporuceno" Click="rmiIspo_Click"/>
-                            <telerik:RadMenuItem  Header="Isporuceno - Placeno" Click="rmiIspoPaid_Click"/>
+                            <telerik:RadMenuItem  Header="Isporučeno" Click="rmiIspo_Click"/>
+                            <telerik:RadMenuItem  Header="Isporučeno - Plaćeno" Click="rmiIspoPaid_Click"/>
                             <telerik:RadMenuItem  Header="Otkazano" Click="rmiCancel_Click"/>
                         </telerik:RadMenuItem>
                         <telerik:RadMenuSeparatorItem/>

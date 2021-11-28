@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TNT_Model", "TNT_Model\TNT_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports", "Reports\Reports.csproj", "{7967105D-E3B3-40B1-B760-311E39C5B009}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TNT_Setup", "TNT_Setup\TNT_Setup.vdproj", "{4196A60B-8588-430B-8BF8-D760A7E6F88D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -60,6 +62,11 @@ Global
 		{7967105D-E3B3-40B1-B760-311E39C5B009}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7967105D-E3B3-40B1-B760-311E39C5B009}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{7967105D-E3B3-40B1-B760-311E39C5B009}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{4196A60B-8588-430B-8BF8-D760A7E6F88D}.CD_ROM|Any CPU.ActiveCfg = Debug
+		{4196A60B-8588-430B-8BF8-D760A7E6F88D}.Debug|Any CPU.ActiveCfg = Debug
+		{4196A60B-8588-430B-8BF8-D760A7E6F88D}.DVD-5|Any CPU.ActiveCfg = Debug
+		{4196A60B-8588-430B-8BF8-D760A7E6F88D}.Release|Any CPU.ActiveCfg = Release
+		{4196A60B-8588-430B-8BF8-D760A7E6F88D}.SingleImage|Any CPU.ActiveCfg = Debug
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

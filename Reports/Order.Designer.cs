@@ -30,6 +30,7 @@
             this.textBox20 = new Telerik.Reporting.TextBox();
             this.textBox21 = new Telerik.Reporting.TextBox();
             this.textBox22 = new Telerik.Reporting.TextBox();
+            this.textBox26 = new Telerik.Reporting.TextBox();
             this.groupHeaderSection = new Telerik.Reporting.GroupHeaderSection();
             this.productGroupHeaderPanel = new Telerik.Reporting.Panel();
             this.productNrTextBox = new Telerik.Reporting.TextBox();
@@ -38,6 +39,7 @@
             this.textBox17 = new Telerik.Reporting.TextBox();
             this.textBox18 = new Telerik.Reporting.TextBox();
             this.textBox19 = new Telerik.Reporting.TextBox();
+            this.textBox25 = new Telerik.Reporting.TextBox();
             this.groupHeaderSection1 = new Telerik.Reporting.GroupHeaderSection();
             this.textBox4 = new Telerik.Reporting.TextBox();
             this.groupFooterSection2 = new Telerik.Reporting.GroupFooterSection();
@@ -54,11 +56,13 @@
             this.textBox13 = new Telerik.Reporting.TextBox();
             this.shape2 = new Telerik.Reporting.Shape();
             this.shape4 = new Telerik.Reporting.Shape();
+            this.textBox23 = new Telerik.Reporting.TextBox();
             this.OrderSource = new Telerik.Reporting.SqlDataSource();
             this.detailSection = new Telerik.Reporting.DetailSection();
             this.textBox14 = new Telerik.Reporting.TextBox();
             this.textBox15 = new Telerik.Reporting.TextBox();
             this.textBox16 = new Telerik.Reporting.TextBox();
+            this.textBox24 = new Telerik.Reporting.TextBox();
             this.reportHeaderSection = new Telerik.Reporting.ReportHeaderSection();
             this.companyNameTextBox = new Telerik.Reporting.TextBox();
             this.companyLogoPictureBox = new Telerik.Reporting.PictureBox();
@@ -67,10 +71,10 @@
             this.textBox2 = new Telerik.Reporting.TextBox();
             this.textBox3 = new Telerik.Reporting.TextBox();
             this.reportFooterSection1 = new Telerik.Reporting.ReportFooterSection();
-            this.textBox23 = new Telerik.Reporting.TextBox();
-            this.textBox24 = new Telerik.Reporting.TextBox();
-            this.textBox25 = new Telerik.Reporting.TextBox();
-            this.textBox26 = new Telerik.Reporting.TextBox();
+            this.textBox27 = new Telerik.Reporting.TextBox();
+            this.textBox28 = new Telerik.Reporting.TextBox();
+            this.textBox29 = new Telerik.Reporting.TextBox();
+            this.textBox30 = new Telerik.Reporting.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // groupFooterSection
@@ -80,6 +84,7 @@
             this.textBox20,
             this.textBox21,
             this.textBox22,
+            this.textBox30,
             this.textBox26});
             this.groupFooterSection.Name = "groupFooterSection";
             this.groupFooterSection.Style.Visible = true;
@@ -111,13 +116,25 @@
             // 
             this.textBox22.Culture = new System.Globalization.CultureInfo("sr-Latn");
             this.textBox22.Format = "{0:N2}";
-            this.textBox22.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.5D), Telerik.Reporting.Drawing.Unit.Inch(0.099D));
+            this.textBox22.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.6D), Telerik.Reporting.Drawing.Unit.Inch(0.083D));
             this.textBox22.Name = "textBox22";
             this.textBox22.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.114D), Telerik.Reporting.Drawing.Unit.Inch(0.208D));
             this.textBox22.Style.Font.Bold = true;
             this.textBox22.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox22.StyleName = "Normal.TableHeader";
             this.textBox22.Value = "= Sum(Fields.DeliveredKg)";
+            // 
+            // textBox26
+            // 
+            this.textBox26.Culture = new System.Globalization.CultureInfo("sr-Latn");
+            this.textBox26.Format = "{0:C2}";
+            this.textBox26.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.714D), Telerik.Reporting.Drawing.Unit.Inch(0.083D));
+            this.textBox26.Name = "textBox26";
+            this.textBox26.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.9D), Telerik.Reporting.Drawing.Unit.Inch(0.208D));
+            this.textBox26.Style.Font.Bold = true;
+            this.textBox26.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox26.StyleName = "Normal.TableHeader";
+            this.textBox26.Value = "= Sum(Fields.PricePerKg)";
             // 
             // groupHeaderSection
             // 
@@ -158,7 +175,8 @@
             this.textBox17,
             this.textBox18,
             this.textBox19,
-            this.textBox25});
+            this.textBox25,
+            this.textBox29});
             this.groupFooterSection1.Name = "groupFooterSection1";
             // 
             // shape3
@@ -196,13 +214,25 @@
             // 
             this.textBox19.Culture = new System.Globalization.CultureInfo("sr-Latn");
             this.textBox19.Format = "{0:N2}";
-            this.textBox19.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.5D), Telerik.Reporting.Drawing.Unit.Inch(0.052D));
+            this.textBox19.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.6D), Telerik.Reporting.Drawing.Unit.Inch(0.052D));
             this.textBox19.Name = "textBox19";
             this.textBox19.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.114D), Telerik.Reporting.Drawing.Unit.Inch(0.208D));
             this.textBox19.Style.Font.Bold = true;
             this.textBox19.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox19.StyleName = "Normal.TableHeader";
             this.textBox19.Value = "= Sum(Fields.DeliveredKg)";
+            // 
+            // textBox25
+            // 
+            this.textBox25.Culture = new System.Globalization.CultureInfo("sr-Latn");
+            this.textBox25.Format = "{0:C2}";
+            this.textBox25.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.714D), Telerik.Reporting.Drawing.Unit.Inch(0.052D));
+            this.textBox25.Name = "textBox25";
+            this.textBox25.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.9D), Telerik.Reporting.Drawing.Unit.Inch(0.208D));
+            this.textBox25.Style.Font.Bold = true;
+            this.textBox25.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox25.StyleName = "Normal.TableHeader";
+            this.textBox25.Value = "= Sum(Fields.PricePerKg)";
             // 
             // groupHeaderSection1
             // 
@@ -246,7 +276,8 @@
             this.textBox13,
             this.shape2,
             this.shape4,
-            this.textBox23});
+            this.textBox23,
+            this.textBox27});
             this.groupHeaderSection2.Name = "groupHeaderSection2";
             // 
             // textBox5
@@ -320,9 +351,9 @@
             // 
             // textBox12
             // 
-            this.textBox12.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.6D), Telerik.Reporting.Drawing.Unit.Inch(0.592D));
+            this.textBox12.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.714D), Telerik.Reporting.Drawing.Unit.Inch(0.592D));
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.9D), Telerik.Reporting.Drawing.Unit.Inch(0.156D));
+            this.textBox12.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.886D), Telerik.Reporting.Drawing.Unit.Inch(0.156D));
             this.textBox12.Style.Font.Bold = false;
             this.textBox12.Style.Font.Italic = true;
             this.textBox12.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
@@ -331,7 +362,7 @@
             // 
             // textBox13
             // 
-            this.textBox13.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.5D), Telerik.Reporting.Drawing.Unit.Inch(0.592D));
+            this.textBox13.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.6D), Telerik.Reporting.Drawing.Unit.Inch(0.592D));
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.114D), Telerik.Reporting.Drawing.Unit.Inch(0.156D));
             this.textBox13.Style.Font.Bold = false;
@@ -353,8 +384,19 @@
             this.shape4.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.5D), Telerik.Reporting.Drawing.Unit.Inch(0.748D));
             this.shape4.Name = "shape4";
             this.shape4.ShapeType = new Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.EW);
-            this.shape4.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(5.2D), Telerik.Reporting.Drawing.Unit.Inch(0.052D));
+            this.shape4.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(6.587D), Telerik.Reporting.Drawing.Unit.Inch(0.052D));
             this.shape4.Style.LineStyle = Telerik.Reporting.Drawing.LineStyle.Dashed;
+            // 
+            // textBox23
+            // 
+            this.textBox23.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.6D), Telerik.Reporting.Drawing.Unit.Inch(0.592D));
+            this.textBox23.Name = "textBox23";
+            this.textBox23.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1D), Telerik.Reporting.Drawing.Unit.Inch(0.156D));
+            this.textBox23.Style.Font.Bold = false;
+            this.textBox23.Style.Font.Italic = true;
+            this.textBox23.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox23.StyleName = "Normal.TableHeader";
+            this.textBox23.Value = "Poručeno Kg";
             // 
             // OrderSource
             // 
@@ -377,7 +419,8 @@
             this.textBox14,
             this.textBox15,
             this.textBox16,
-            this.textBox24});
+            this.textBox24,
+            this.textBox28});
             this.detailSection.KeepTogether = false;
             this.detailSection.Name = "detailSection";
             // 
@@ -393,9 +436,9 @@
             // 
             this.textBox15.Culture = new System.Globalization.CultureInfo("sr-Latn");
             this.textBox15.Format = "{0:C2}";
-            this.textBox15.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.6D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox15.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.714D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.9D), Telerik.Reporting.Drawing.Unit.Inch(0.208D));
+            this.textBox15.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.886D), Telerik.Reporting.Drawing.Unit.Inch(0.208D));
             this.textBox15.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox15.StyleName = "Normal.TableHeader";
             this.textBox15.Value = "= Fields.PricePerKg";
@@ -403,12 +446,23 @@
             // textBox16
             // 
             this.textBox16.Format = "{0:N2}";
-            this.textBox16.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.5D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox16.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.6D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.114D), Telerik.Reporting.Drawing.Unit.Inch(0.208D));
             this.textBox16.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox16.StyleName = "Normal.TableHeader";
             this.textBox16.Value = "= Fields.DeliveredKg";
+            // 
+            // textBox24
+            // 
+            this.textBox24.Culture = new System.Globalization.CultureInfo("sr-Latn");
+            this.textBox24.Format = "{0:N2}";
+            this.textBox24.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.6D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox24.Name = "textBox24";
+            this.textBox24.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1D), Telerik.Reporting.Drawing.Unit.Inch(0.208D));
+            this.textBox24.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox24.StyleName = "Normal.TableHeader";
+            this.textBox24.Value = "= Fields.OrderKg";
             // 
             // reportHeaderSection
             // 
@@ -479,51 +533,52 @@
             this.reportFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(0.197D);
             this.reportFooterSection1.Name = "reportFooterSection1";
             // 
-            // textBox23
+            // textBox27
             // 
-            this.textBox23.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.6D), Telerik.Reporting.Drawing.Unit.Inch(0.592D));
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1D), Telerik.Reporting.Drawing.Unit.Inch(0.156D));
-            this.textBox23.Style.Font.Bold = false;
-            this.textBox23.Style.Font.Italic = true;
-            this.textBox23.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.textBox23.StyleName = "Normal.TableHeader";
-            this.textBox23.Value = "Poručeno Kg";
+            this.textBox27.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.6D), Telerik.Reporting.Drawing.Unit.Inch(0.592D));
+            this.textBox27.Name = "textBox27";
+            this.textBox27.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.486D), Telerik.Reporting.Drawing.Unit.Inch(0.156D));
+            this.textBox27.Style.Font.Bold = false;
+            this.textBox27.Style.Font.Italic = true;
+            this.textBox27.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox27.StyleName = "Normal.TableHeader";
+            this.textBox27.Value = "Isporučeno Cena";
             // 
-            // textBox24
+            // textBox28
             // 
-            this.textBox24.Culture = new System.Globalization.CultureInfo("sr-Latn");
-            this.textBox24.Format = "{0:N2}";
-            this.textBox24.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.6D), Telerik.Reporting.Drawing.Unit.Inch(0D));
-            this.textBox24.Name = "textBox24";
-            this.textBox24.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1D), Telerik.Reporting.Drawing.Unit.Inch(0.208D));
-            this.textBox24.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.textBox24.StyleName = "Normal.TableHeader";
-            this.textBox24.Value = "= Fields.OrderKg";
+            this.textBox28.Culture = new System.Globalization.CultureInfo("sr-Latn");
+            this.textBox28.Format = "{0:C2}";
+            this.textBox28.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.6D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox28.Name = "textBox28";
+            this.textBox28.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.486D), Telerik.Reporting.Drawing.Unit.Inch(0.208D));
+            this.textBox28.Style.Font.Bold = true;
+            this.textBox28.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox28.StyleName = "Normal.TableHeader";
+            this.textBox28.Value = "= Fields.DeliveredKg * Fields.PricePerKg";
             // 
-            // textBox25
+            // textBox29
             // 
-            this.textBox25.Culture = new System.Globalization.CultureInfo("sr-Latn");
-            this.textBox25.Format = "{0:C2}";
-            this.textBox25.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.6D), Telerik.Reporting.Drawing.Unit.Inch(0.052D));
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.9D), Telerik.Reporting.Drawing.Unit.Inch(0.208D));
-            this.textBox25.Style.Font.Bold = true;
-            this.textBox25.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.textBox25.StyleName = "Normal.TableHeader";
-            this.textBox25.Value = "= Sum(Fields.PricePerKg)";
+            this.textBox29.Culture = new System.Globalization.CultureInfo("sr-Latn");
+            this.textBox29.Format = "{0:C2}";
+            this.textBox29.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.614D), Telerik.Reporting.Drawing.Unit.Inch(0.052D));
+            this.textBox29.Name = "textBox29";
+            this.textBox29.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.472D), Telerik.Reporting.Drawing.Unit.Inch(0.208D));
+            this.textBox29.Style.Font.Bold = true;
+            this.textBox29.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox29.StyleName = "Normal.TableHeader";
+            this.textBox29.Value = "= Sum((Fields.DeliveredKg * Fields.PricePerKg)) ";
             // 
-            // textBox26
+            // textBox30
             // 
-            this.textBox26.Culture = new System.Globalization.CultureInfo("sr-Latn");
-            this.textBox26.Format = "{0:C2}";
-            this.textBox26.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.6D), Telerik.Reporting.Drawing.Unit.Inch(0.083D));
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.9D), Telerik.Reporting.Drawing.Unit.Inch(0.208D));
-            this.textBox26.Style.Font.Bold = true;
-            this.textBox26.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.textBox26.StyleName = "Normal.TableHeader";
-            this.textBox26.Value = "= Sum(Fields.PricePerKg)";
+            this.textBox30.Culture = new System.Globalization.CultureInfo("sr-Latn");
+            this.textBox30.Format = "{0:C2}";
+            this.textBox30.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.614D), Telerik.Reporting.Drawing.Unit.Inch(0.083D));
+            this.textBox30.Name = "textBox30";
+            this.textBox30.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.473D), Telerik.Reporting.Drawing.Unit.Inch(0.208D));
+            this.textBox30.Style.Font.Bold = true;
+            this.textBox30.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox30.StyleName = "Normal.TableHeader";
+            this.textBox30.Value = "= Sum((Fields.DeliveredKg * Fields.PricePerKg))";
             // 
             // Order
             // 
@@ -677,5 +732,9 @@
         private Telerik.Reporting.TextBox textBox23;
         private Telerik.Reporting.TextBox textBox24;
         private Telerik.Reporting.TextBox textBox26;
+        private Telerik.Reporting.TextBox textBox30;
+        private Telerik.Reporting.TextBox textBox29;
+        private Telerik.Reporting.TextBox textBox27;
+        private Telerik.Reporting.TextBox textBox28;
     }
 }
