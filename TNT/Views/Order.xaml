@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:telerikData="clr-namespace:Telerik.Windows.Data;assembly=Telerik.Windows.Data"
         xmlns:local="clr-namespace:TNT.Views"
-        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="768" 
-        Title="Nova Poruđžbina" Width="1200" Height="800" WindowStartupLocation="CenterScreen" Icon="/TNT;component/Fish.ico">
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="768" 
+        Title="Nova Poruđžbina" WindowState="Maximized" Icon="/TNT;component/Fish.ico">
 
     <Window.Resources>
         <DataTemplate x:Key="SelectionBoxContact">
@@ -88,17 +88,6 @@
                     </Grid>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5">
-                    <TextBlock Text="Datum Poruđžbine" VerticalAlignment="Center" Foreground="LightGray" />
-                    <telerik:RadDatePicker Name="dtOrder" DateTimeWatermarkContent="Unesi datum" Grid.Column="1" Culture="sr-Latn" Background="NavajoWhite"
-                                           SelectedDate="{Binding OrderDate, Mode=TwoWay, NotifyOnValidationError=True}" />
-                </StackPanel>
-
-                <StackPanel Grid.Column="2" Orientation="Vertical" Margin="5">
-                    <TextBlock Text="Vreme Poruđžbine" VerticalAlignment="Center" Foreground="LightGray" />
-                    <telerik:RadTimePicker Name="dtOrderTime" Culture="sr-Latn" DateTimeWatermarkContent="Unesi vreme" Background="NavajoWhite"
-                                           SelectedValue="{Binding OrderTime, Mode=TwoWay, NotifyOnValidationError=True}"/>
-                </StackPanel>
                 
                 <StackPanel Grid.Row="1" Grid.Column="0"  Orientation="Vertical" Margin="5">
                     <TextBlock Text="Ime I Prezime" Foreground="LightGray"/>
@@ -212,25 +201,27 @@
                     
                 </StackPanel>
 
-                <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical" Margin="5">
+                <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Vertical" Margin="5">
                     <TextBlock Text="Isporučena kg" Foreground="LightGray"/>
                     <telerik:RadMaskedNumericInput Culture="sr-Latn" AllowSkipPlaceholders="True" HorizontalAlignment="Stretch"
                                                    Value="{Binding DeliveredKg, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" IsManipulationEnabled="True" Text="___.___.__0,000" Mask="#9.3"/>
                 </StackPanel>
 
-                <StackPanel Grid.Row="3" Orientation="Vertical" Margin="5" Grid.ColumnSpan="3">
+                <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Vertical" Margin="5" >
+                    <TextBlock Text="Status" Foreground="LightGray"/>
+                    <telerik:RadComboBox Name="cboStatus" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Description" Cursor="Hand" SelectedValuePath="Description" Background="NavajoWhite"
+                                         Text="{Binding Status, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="4" Orientation="Vertical" Margin="5" Grid.ColumnSpan="3">
                     <TextBlock Text="Beleške" Foreground="LightGray"/>
-                    <TextBox TextWrapping="Wrap" AcceptsReturn="True" MinHeight="50" VerticalAlignment="Stretch" TextAlignment="Left" VerticalContentAlignment="Top"
+                    <TextBox TextWrapping="Wrap" AcceptsReturn="True" MinHeight="100" VerticalAlignment="Stretch" TextAlignment="Left" VerticalContentAlignment="Top"
                              Text="{Binding Notes, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}"/>
                 </StackPanel>
 
                 
 
-                <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Vertical" Margin="5" >
-                    <TextBlock Text="Status" Foreground="LightGray"/>
-                    <telerik:RadComboBox Name="cboStatus" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Description" Cursor="Hand" SelectedValuePath="Description" Background="NavajoWhite"
-                                         Text="{Binding Status, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
-                </StackPanel>
+                
             </Grid>
         </Border>
         <Border Grid.Row="2">

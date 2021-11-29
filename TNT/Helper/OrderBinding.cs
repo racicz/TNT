@@ -12,8 +12,6 @@ namespace TNT.Helper
     {
         int orderId = 0;
         string orderNumber;
-        DateTime? orderDate;
-        DateTime? orderTime;
         string name;
         string company;
         string town;
@@ -32,26 +30,6 @@ namespace TNT.Helper
             {
                 orderId = value;
                 OnPropertyChanged("OrderId");
-            }
-        }
-
-        public DateTime? OrderDate
-        {
-            get { return orderDate; }
-            set
-            {
-                orderDate = value;
-                OnPropertyChanged("OrderDate");
-            }
-        }
-
-        public DateTime? OrderTime
-        {
-            get { return orderTime; }
-            set
-            {
-                orderTime = value;
-                OnPropertyChanged("OrderTime");
             }
         }
 

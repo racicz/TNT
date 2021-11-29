@@ -59,8 +59,6 @@ namespace TNT.Views
 
             ordBind.OrderId = editOrder.OrderId;
             ordBind.OrderNumber = editOrder.OrderNumber;
-            ordBind.OrderDate = orderDate;
-            ordBind.OrderTime = orderTime;
             ordBind.DeliveryDate = delDate;
             ordBind.DeliveryTime = delTime;
 
@@ -88,9 +86,6 @@ namespace TNT.Views
             ordDetailBind.Status = "Poruceno";
             ordBind.DeliveryDate = DateTime.Today.AddDays(1);
             ordBind.DeliveryTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,8,0,0);
-
-            ordBind.OrderDate = DateTime.Today;
-            ordBind.OrderTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 0, 0);
         }
 
         void Bindings()
@@ -366,8 +361,8 @@ namespace TNT.Views
                 {
                     OrderId = ordBind.OrderId,
                     OrderNumber = ordBind.OrderNumber,
-                    OrderDate = Convert.ToDateTime(ordBind.OrderDate).ToString("d"),
-                    OrderTime = Convert.ToDateTime(ordBind.OrderTime).ToString("t"),
+                    OrderDate = DateTime.Now.ToString("d"),
+                    OrderTime = DateTime.Now.ToString("t"),
                     DeliveryDate = Convert.ToDateTime(ordBind.DeliveryDate).ToString("d"),
                     DeliveryTime = Convert.ToDateTime(ordBind.DeliveryTime).ToString("t"),
                     SubjectId = cboContact.SelectedItem != null ? (cboContact.SelectedItem as ContactPerson).Person.SubjectId : 0,
@@ -402,12 +397,6 @@ namespace TNT.Views
             {
                 if (string.IsNullOrEmpty(ordBind.Name))
                     return "Ime I Prezime je obavezno polje.";
-
-                if (ordBind.OrderDate == null)
-                    return "Datum Poruđžbine je obavezno polje.";
-
-                if (ordBind.OrderTime == null)
-                    return "Vreme Poruđžbine je obavezno polje.";
 
                 if (string.IsNullOrEmpty(ordBind.OrderNumber))
                     return "Broj Poruđžbine je obavezno polje.";
