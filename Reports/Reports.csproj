@@ -57,6 +57,12 @@
     <Compile Include="OrderDetails.Designer.cs">
       <DependentUpon>OrderDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderSubReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OrderSubReport.Designer.cs">
+      <DependentUpon>OrderSubReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -77,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OrderDetails.resx">
       <DependentUpon>OrderDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderSubReport.resx">
+      <DependentUpon>OrderSubReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>

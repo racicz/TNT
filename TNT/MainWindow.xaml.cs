@@ -57,7 +57,7 @@ namespace TNT
 
         private void btnOptions_Click(object sender, RoutedEventArgs e)
         {
-            OptMenu.PlacementRectangle = new Rect(new Point(0, btnOptions.RenderSize.Height), new Size(0, 0));
+            OptMenu.PlacementRectangle = new Rect(new Point(btnMnuOpt.RenderSize.Width, btnOptions.RenderSize.Height), new Size(0, 0));
             OptMenu.IsOpen = true;
         }
 
@@ -373,6 +373,14 @@ namespace TNT
         private void btnMnuClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void txtAccountNo_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Search();
+            }
         }
     }
 }

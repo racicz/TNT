@@ -633,11 +633,21 @@ namespace TNT_Library
 
         public Response IsStatusChanged(Order order, int statusId)
         {
+            int[] status = { (int)StatusEnum.Isporuceno, (int)StatusEnum.IsporucenoPlaceno };
+            string sql = string.Format(@"update OrderDetail
+                                            set statusId = {0},
+                                                DeliveredKg = 0
+                                        where OrderId = {1}", statusId, order.OrderId);
+            if (status.Contains(statusId))
+                sql = string.Format(@"update OrderDetail
+                                            set StatusId = {0},
+                                                DeliveredKg = OrderKg
+                                        where OrderId = {1}", statusId, order.OrderId);
+
+
             using (var cnn = new SqlConnection(strConn))
             {
-                using (var cmd = new SqlCommand(string.Format(@"update OrderDetail
-                                                                    set statusId = {0}
-                                                                where OrderId = {1}", statusId, order.OrderId), cnn))
+                using (var cmd = new SqlCommand(sql, cnn))
                 {
                     Response response = new Response();
 
@@ -646,6 +656,17 @@ namespace TNT_Library
 
                         cnn.Open();
                         cmd.ExecuteNonQuery();
+
+                        if (status.Contains(statusId))
+                        {
+                            var orderResults = UpdateOrderToDelivered(order);
+                            if (!orderResults)
+                            {
+                                response.Msg = "Status nije promenjen. Greška u ažuriranju";
+                                response.Return = false;
+                            }
+                        }
+
                         response.Msg = "Status Promenjen.";
                         response.Return = true;
 
@@ -661,6 +682,27 @@ namespace TNT_Library
                 }
             }
         }
+
+        bool UpdateOrderToDelivered(Order order)
+        {
+            string sql = string.Format(@"update [Order]
+                                            set DeliveryDate = '{0}',
+                                                DeliveryTime = '{1}'
+                                        where OrderId = {2}", DateTime.Today.ToString("d"), DateTime.Now.ToString("hh:00:tt"), order.OrderId);
+           
+
+
+            using (var cnn = new SqlConnection(strConn))
+            {
+                using (var cmd = new SqlCommand(sql, cnn))
+                {
+                    cnn.Open();
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+            }
+        }
+
 
         private string ErrorLog
         {
