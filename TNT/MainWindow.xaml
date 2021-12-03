@@ -245,7 +245,7 @@
                         <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding FormattedValue}" TextAlignment="Right"/>
                     </telerik:GridViewDataColumn.Footer>
                 </telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn Header="Duguje" DataMemberBinding="{Binding Due}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right" Width="*">
+                <telerik:GridViewDataColumn Header="Duguje" DataMemberBinding="{Binding Due}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right" Width="*">
                     <telerik:GridViewDataColumn.AggregateFunctions>
                         <telerik:SumFunction  SourceField="Due" />
                     </telerik:GridViewDataColumn.AggregateFunctions>
@@ -323,9 +323,9 @@
                         </telerik:RadGridView.Resources>
 
                         <telerik:RadGridView.Columns>
-                            <telerik:GridViewDataColumn Header="Poručeno KG" DataMemberBinding="{Binding OrderKg}" HeaderTextAlignment="Right" TextAlignment="Right" IsReadOnly="True" Width="*"/>
-                            <telerik:GridViewDataColumn Header="Cena 1 KG" DataMemberBinding="{Binding PricePerKg}" HeaderTextAlignment="Right" TextAlignment="Right" IsReadOnly="True" Width="*"/>
-                            <telerik:GridViewDataColumn Header="Poručeno RSD" DataMemberBinding="{Binding AmountDue}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right"  IsReadOnly="True" Width="*">
+                            <telerik:GridViewDataColumn Header="Poručeno KG" DataMemberBinding="{Binding OrderKg}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" IsReadOnly="True" Width="*"/>
+                            <telerik:GridViewDataColumn Header="Cena 1 KG" DataMemberBinding="{Binding PricePerKg}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" IsReadOnly="True" Width="*"/>
+                            <telerik:GridViewDataColumn Header="Poručeno RSD" DataMemberBinding="{Binding AmountDue}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right"  IsReadOnly="True" Width="*">
                                 <telerik:GridViewDataColumn.AggregateFunctions>
                                     <telerik:SumFunction  SourceField="AmountDue"/>
                                 </telerik:GridViewDataColumn.AggregateFunctions>
@@ -333,8 +333,8 @@
                                     <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding FormattedValue}"/>
                                 </telerik:GridViewDataColumn.Footer>
                             </telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn Header="Isporučeno KG" DataMemberBinding="{Binding DeliveredKg}" HeaderTextAlignment="Right" TextAlignment="Right"  IsReadOnly="True" Width="*"/>
-                            <telerik:GridViewDataColumn Header="Isporučeno RSD" DataMemberBinding="{Binding AmountPaid}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right"  IsReadOnly="True" Width="*">
+                            <telerik:GridViewDataColumn Header="Isporučeno KG" DataMemberBinding="{Binding DeliveredKg}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right"  IsReadOnly="True" Width="*"/>
+                            <telerik:GridViewDataColumn Header="Isporučeno RSD" DataMemberBinding="{Binding AmountPaid}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right"  IsReadOnly="True" Width="*">
                                 <telerik:GridViewDataColumn.AggregateFunctions>
                                     <telerik:SumFunction  SourceField="AmountPaid"/>
                                 </telerik:GridViewDataColumn.AggregateFunctions>

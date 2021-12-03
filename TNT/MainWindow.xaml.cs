@@ -309,9 +309,7 @@ namespace TNT
         private void rmiIspoPaid_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
             if (!ChangeStatus(6))
-            {
                 MessageBox.Show("Status nije promenjen.", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
         }
 
         private void rmiCancel_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
@@ -327,6 +325,7 @@ namespace TNT
             if (child != null && child.SelectedItem != null)
             {
                 var isUpdated =  vServer.IsStatusChanged((child.SelectedItem as TNT_Model.Order), statusId).Return;
+                Search();
                 LoadDetails();
                 return isUpdated;
             }

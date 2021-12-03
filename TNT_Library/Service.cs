@@ -366,7 +366,7 @@ namespace TNT_Library
                                     OrderDate = dr["OrderDate"] != DBNull.Value ? Convert.ToDateTime(dr["OrderDate"]).ToString("d", ci) : string.Empty,
                                     OrderTime = dr["OrderTime"] != DBNull.Value ? Convert.ToDateTime(dr["OrderTime"]).ToString("t", ci) : string.Empty,
                                     DeliveryDate = dr["DeliveryDate"] != DBNull.Value ? Convert.ToDateTime(dr["DeliveryDate"]).ToString("d", ci) : string.Empty,
-                                    DeliveryTime = dr["DeliveryTime"] != DBNull.Value ? Convert.ToDateTime(dr["DeliveryTime"]).ToString("t", ci) : string.Empty,
+                                    DeliveryTime = dr["DeliveryTime"] != DBNull.Value ? Convert.ToDateTime(dr["DeliveryTime"]).ToString("t",ci) : string.Empty,
                                 });
 
                                 var person = new Person()
@@ -638,7 +638,16 @@ namespace TNT_Library
                                             set statusId = {0},
                                                 DeliveredKg = 0
                                         where OrderId = {1}", statusId, order.OrderId);
-            if (status.Contains(statusId))
+
+            if (statusId == (int)StatusEnum.IsporucenoPlaceno)
+                sql = string.Format(@"update OrderDetail
+                                            set statusId = {0},
+                                                DeliveredKg = OrderKg,
+                                                AmountPaid = AmountDue,
+                                                AmountDue = 0
+                                        where OrderId = {1}", statusId, order.OrderId);
+
+            if (statusId == (int)StatusEnum.Isporuceno)
                 sql = string.Format(@"update OrderDetail
                                             set StatusId = {0},
                                                 DeliveredKg = OrderKg
@@ -688,7 +697,7 @@ namespace TNT_Library
             string sql = string.Format(@"update [Order]
                                             set DeliveryDate = '{0}',
                                                 DeliveryTime = '{1}'
-                                        where OrderId = {2}", DateTime.Today.ToString("d"), DateTime.Now.ToString("hh:00:tt"), order.OrderId);
+                                        where OrderId = {2}", DateTime.Today.ToString("d"), DateTime.Now.ToString("hh:00 tt"), order.OrderId);
            
 
 
