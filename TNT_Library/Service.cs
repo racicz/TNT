@@ -448,9 +448,9 @@ namespace TNT_Library
                             results.Add(new OrderDetail()
                             {
                                 OrderDetailId = Convert.ToInt32(dr["OrderDetailId"]),
-                                OrderKg = dr["OrderKg"] != DBNull.Value ? Convert.ToDecimal(dr["OrderKg"], ci) : 0,
+                                OrderKg = dr["OrderKg"] != DBNull.Value ? decimal.Round(Convert.ToDecimal(dr["OrderKg"], ci),2,MidpointRounding.AwayFromZero) : 0,
                                 PricePerKg = dr["PricePerKg"] != DBNull.Value ? Convert.ToDecimal(dr["PricePerKg"], ci) : 0,
-                                DeliveredKg = dr["DeliveredKg"] != DBNull.Value ? Convert.ToDecimal(dr["DeliveredKg"], ci) : 0,
+                                DeliveredKg = dr["DeliveredKg"] != DBNull.Value ? decimal.Round(Convert.ToDecimal(dr["DeliveredKg"], ci),2,MidpointRounding.AwayFromZero) : 0,
                                 AmountDue = dr["AmountDue"] != DBNull.Value ? Convert.ToDecimal(dr["AmountDue"], ci) : 0,
                                 AmountPaid = dr["AmountPaid"] != DBNull.Value ? Convert.ToDecimal(dr["AmountPaid"], ci) : 0,
                                 FishTypeId = Convert.ToInt32(dr["FishTypeId"]),
@@ -614,6 +614,50 @@ namespace TNT_Library
                         else
                         {
                             response.Msg = cmd.Parameters["@msg"].Value.ToString();
+                            response.Return = true;
+                            response.ReturnValue = Convert.ToInt32(cmd.Parameters["@return_value"].Value);
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        response.Msg = ex.ToString();
+                        response.Return = false;
+                        ErrorLog = ex.ToString();
+                    }
+
+                    return response;
+                }
+            }
+        }
+
+        public Response IsDatabaseBackedUp(string path)
+        {
+            using (var cnn = new SqlConnection(strConn))
+            {
+                using (var cmd = new SqlCommand("dbo.sp_database_backup", cnn))
+                {
+                    Response response = new Response();
+
+                    try
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandTimeout = 1200;
+                        cmd.Parameters.Add(new SqlParameter("@return_value", SqlDbType.Int)).Direction = ParameterDirection.ReturnValue;
+                        cmd.Parameters.Add(new SqlParameter("@path", SqlDbType.VarChar, 1000)).Value = path;
+                        cmd.Parameters.Add(new SqlParameter("@msg", SqlDbType.VarChar, 8000)).Direction = ParameterDirection.Output;
+
+                        cnn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        if (Convert.ToInt32(cmd.Parameters["@return_value"].Value) < 0)
+                        {
+                            response.Msg = cmd.Parameters["@msg"].Value.ToString();
+                            response.Return = false;
+                        }
+                        else
+                        {
+                            response.Msg = "Baza je sačuvana na lokaciji: " + cmd.Parameters["@msg"].Value.ToString();
                             response.Return = true;
                             response.ReturnValue = Convert.ToInt32(cmd.Parameters["@return_value"].Value);
                         }

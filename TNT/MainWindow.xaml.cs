@@ -57,7 +57,7 @@ namespace TNT
 
         private void btnOptions_Click(object sender, RoutedEventArgs e)
         {
-            OptMenu.PlacementRectangle = new Rect(new Point(btnMnuOpt.RenderSize.Width, btnOptions.RenderSize.Height), new Size(0, 0));
+            OptMenu.PlacementRectangle = new Rect(new Point(0, btnOptions.RenderSize.Height), new Size(0, 0));
             OptMenu.IsOpen = true;
         }
 
@@ -118,27 +118,46 @@ namespace TNT
 
         void Search()
         {
-            ClearData();
-
+            spinner.Visibility = Visibility.Visible;
             string search = txtAccountNo.Text.Length == 0 ? GetSerachData : string.Format(" OrderNUmber = {0} ", txtAccountNo.Text);
-
-            if (search.Length == 0)
-                this.dgPerson.DataContext = vServer.GetSearchResults(string.Empty);
-            else
-                this.dgPerson.DataContext = vServer.GetSearchResults("Where " + search);
-
-            if (dgPerson.HasItems && dgPerson.Items.Count == 1)
-            {
-                dgPerson.SelectedItem = dgPerson.Items[0];
-                dgPerson.RowDetailsVisibilityMode = GridViewRowDetailsVisibilityMode.Visible;
-            }
-
             dgDetails.DataContext = null;
+
+            List<Search> response = null;
+
+            Task.Factory.StartNew(() =>
+            {
+                if (search.Length == 0)
+                    response = vServer.GetSearchResults(string.Empty);
+                else
+                    response = vServer.GetSearchResults("Where " + search);
+
+            }).ContinueWith(Task =>
+            {
+                this.dgPerson.DataContext = response;
+
+                if (response != null && response.Count == 1)
+                {
+                    dgPerson.SelectedItem = response.FirstOrDefault();
+                    dgPerson.RowDetailsVisibilityMode = GridViewRowDetailsVisibilityMode.Visible;
+                }
+                
+                spinner.Visibility = Visibility.Hidden;
+            }, System.Threading.CancellationToken.None, TaskContinuationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
+
+            
+            
         }
 
         private void ClearData()
         {
-            
+            dgPerson.DataContext = null;
+            dgDetails.DataContext = null;
+            this.txtAccountNo.Text = string.Empty;
+            this.cboContact.Text = string.Empty;
+            this.cboTowns.Text = string.Empty;
+            this.dpOrderStart.SelectedValue = null;
+            this.dpOrderEnd.SelectedValue = null;
+            this.cboStatus.Text = string.Empty;
         }
 
         string GetSerachData
@@ -380,6 +399,32 @@ namespace TNT
             {
                 Search();
             }
+        }
+
+        private void rmiBackup_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog openFileDlg = new System.Windows.Forms.FolderBrowserDialog();
+            var result = openFileDlg.ShowDialog();
+            if (result.ToString() != string.Empty && !string.IsNullOrEmpty(openFileDlg.SelectedPath))
+            {
+
+                spinner.Visibility = Visibility.Visible;
+                Task.Factory.StartNew(() =>
+                {
+                    var response = vServer.IsDatabaseBackedUp(openFileDlg.SelectedPath);
+                    MessageBox.Show(response.Msg, "Backup", MessageBoxButton.OK, MessageBoxImage.Information);
+                }).ContinueWith(Task =>
+                {
+                    spinner.Visibility = Visibility.Hidden;
+                }, System.Threading.CancellationToken.None, TaskContinuationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
+                
+            }
+            
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            ClearData();
         }
     }
 }

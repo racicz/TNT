@@ -16,7 +16,6 @@ C:\Projects\TNT\Reports\bin\Release\Reports.dll
 C:\Projects\TNT\Reports\bin\Release\Reports.pdb
 C:\Projects\TNT\Reports\bin\Release\Telerik.Reporting.pdb
 C:\Projects\TNT\Reports\bin\Release\Telerik.Reporting.xml
-C:\Projects\TNT\Reports\obj\Release\Reports.csproj.AssemblyReference.cache
 C:\Projects\TNT\Reports\obj\Release\Reports.Order.resources
 C:\Projects\TNT\Reports\obj\Release\Reports.OrderDetails.resources
 C:\Projects\TNT\Reports\obj\Release\Reports.csproj.GenerateResource.cache
@@ -26,3 +25,4 @@ C:\Projects\TNT\Reports\obj\Release\Reports.csproj.CopyComplete
 C:\Projects\TNT\Reports\obj\Release\Reports.dll
 C:\Projects\TNT\Reports\obj\Release\Reports.pdb
 C:\Projects\TNT\Reports\bin\Release\Telerik.Reporting.dll
+C:\Projects\TNT\Reports\obj\Release\Reports.OrderSubReport.resources

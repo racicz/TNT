@@ -6,8 +6,10 @@
         xmlns:local="clr-namespace:TNT"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="TNT.MainWindow"
         xmlns:telerikData="clr-namespace:Telerik.Windows.Data;assembly=Telerik.Windows.Data"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"   
         mc:Ignorable="d"
-        Title="TNT Preduzece" WindowState="Maximized">
+    
+        Title="TNT Preduzeće" WindowState="Maximized">
 
     <Window.Resources>
         <DataTemplate x:Key="SelectionBoxContact">
@@ -31,324 +33,353 @@
             </Grid>
         </DataTemplate>
     </Window.Resources>
-    
+
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <Border x:Name="LinksBorder" Style="{StaticResource NavLinksBorderStyle2}" Margin="5">
-            <Grid Cursor="Hand">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Button Name="btnMnuOpt" Click="btnMnuOpt_Click"
-                                        Style="{StaticResource GreenButton}" Margin="5">
-                    <DockPanel>
-                        <Image Width="24" Height="24" Source="Styles/report.png"
-						                        ToolTipService.ToolTip="Unosenje podataka" />
-
-                        <TextBlock Text="Poruđžbina" Margin="5,0,0,0" VerticalAlignment="Center"/>
-
-                        <telerik:RadContextMenu.ContextMenu>
-                            <telerik:RadContextMenu x:Name="OptOrderMenu" Cursor="Hand">
-                                <telerik:RadContextMenu.Items>
-                                    <telerik:RadMenuItem Name="rmiNewOrder" Header="Nova Poruđžbina" Click="rmiNewOrder_Click"/>
-                                    <telerik:RadMenuItem Name="rmiUpdOrder" Header="Azuriraj Poruđžbinu" Click="rmiUpdOrder_Click" IsEnabled="False"/>
-                                    <telerik:RadMenuSeparatorItem/>
-                                    <telerik:RadMenuItem Name="rmiDelOrder" Header="Izbrisi Poruđžbinu" Click="rmiDelOrder_Click" IsEnabled="False"/>
-                                </telerik:RadContextMenu.Items>
-                            </telerik:RadContextMenu>
-                        </telerik:RadContextMenu.ContextMenu>
-                    </DockPanel>
-                </Button>
-                <Button Name="btnOptions" Grid.Column="1" Click="btnOptions_Click"
-                                        Style="{StaticResource GreenButton}" Margin="5">
-                    <DockPanel>
-                        <Image Width="24" Height="24" Source="Styles/Gear.png"
-						                        ToolTipService.ToolTip="OdŠtampaj izveštaj" />
-
-                        <TextBlock Text="Opcije" Margin="5,0,0,0" VerticalAlignment="Center"/>
-
-                        <telerik:RadContextMenu.ContextMenu>
-                            <telerik:RadContextMenu x:Name="OptMenu" Cursor="Hand">
-                                <telerik:RadContextMenu.Items>
-                                    <telerik:RadMenuItem Name="rmiNewAccount" Header="Cena Ribe" Click="rmiNewAccount_Click"/>
-                                    <telerik:RadMenuItem Name="rmiStatusChange" Header="Promeni Status">
-                                        <telerik:RadMenuItem Name="rmiIspo" Header="Isporučeno" Click="rmiIspo_Click"/>
-                                        <telerik:RadMenuItem Name="rmiIspoPaid" Header="Isporučeno - Plaćeno" Click="rmiIspoPaid_Click"/>
-                                        <telerik:RadMenuItem Name="rmiCancel" Header="Otkazano" Click="rmiCancel_Click"/>
-                                    </telerik:RadMenuItem>
-                                    <telerik:RadMenuSeparatorItem/>
-                                    <telerik:RadMenuItem Name="rmiReports" Header="Izvestaj" >
-                                        <telerik:RadMenuItem Header="Poruđžbine">
-                                            <StackPanel Orientation="Horizontal">
-                                                <StackPanel Margin="0,0,5,0">
-                                                    <telerik:RadMenuItem Header="Vreme"/>
-                                                    <telerik:RadTimePicker Name="dpTime" DateTimeWatermarkContent="Unesi vreme" Culture="sr-Latn"/>
-                                                </StackPanel>
-
-                                                <StackPanel>
-                                                    <telerik:RadMenuItem Header="Datum Isporuke"/>
-                                                    <telerik:RadDatePicker Name="dpTo" DateTimeWatermarkContent="Unesi datum" Culture="sr-Latn" DropDownClosed="dpTo_DropDownClosed"/>
-
-                                                </StackPanel>
-                                            </StackPanel>
-                                        </telerik:RadMenuItem>
-                                        <telerik:RadMenuItem Header="Isporučeno">
-                                            <StackPanel Orientation="Horizontal">
-                                                <StackPanel Margin="0,0,5,0">
-                                                    <telerik:RadMenuItem Header="Vreme"/>
-                                                    <telerik:RadTimePicker Name="dpDetTime" DateTimeWatermarkContent="Unesi vreme" Culture="sr-Latn"/>
-                                                </StackPanel>
-
-                                                <StackPanel>
-                                                    <telerik:RadMenuItem Header="Datum Isporuke"/>
-                                                    <telerik:RadDatePicker Name="dpDetDate" DateTimeWatermarkContent="Unesi datum" Culture="sr-Latn" DropDownClosed="dpDetDate_DropDownClosed"/>
-
-                                                </StackPanel>
-                                            </StackPanel>
-                                        </telerik:RadMenuItem>
-                                    </telerik:RadMenuItem>
-                                </telerik:RadContextMenu.Items>
-                            </telerik:RadContextMenu>
-                        </telerik:RadContextMenu.ContextMenu>
-                    </DockPanel>
-                </Button>
-
-                <Button Name="btnMnuClose" Grid.Column="2" Click="btnMnuClose_Click"
-                                        Style="{StaticResource GreenButton}" Margin="5">
-                    <DockPanel>
-                        <Image Width="24" Height="24" Source="Styles/exit.png"
-						                        ToolTipService.ToolTip="Zatvori aplikaciju" />
-
-                        <TextBlock Text="Zatvori" Margin="5,0,0,0" VerticalAlignment="Center"/>
-                    </DockPanel>
-                </Button>
-            </Grid>
-        </Border>
-
-        <Border Style="{StaticResource ChildBorderStyle}" Margin="5,0" Grid.Row="1">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
-
-                <StackPanel Grid.Column="0" Margin="5">
-                    <TextBlock Text="Broj Poruđžbine" VerticalAlignment="Center" Foreground="Black"/>
-                    <TextBox Name="txtAccountNo"   KeyUp="txtAccountNo_KeyUp"
-                                    MaxLength="100"  Height="20" />
-                </StackPanel>
-
-
-                <StackPanel Grid.Column="1" Grid.ColumnSpan="3" Margin="5">
-                    <TextBlock Text="Ime" VerticalAlignment="Center" Foreground="Black"/>
-                    <telerik:RadComboBox Name="cboContact" IsEditable="True" Cursor="Hand"  
-                                         SelectedValuePath="Person.Name" 
-                                         telerik:TextSearch.TextPath="Person.Name"
-                                         ItemTemplate="{StaticResource ComboContactTemplate}"
-                                         SelectionBoxTemplate="{StaticResource SelectionBoxContact}"
-                                         Text="{Binding Name, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
-                </StackPanel>
-
-                <StackPanel Grid.Column="4" Grid.ColumnSpan="3" Margin="5">
-                    <TextBlock Text="Mesto" VerticalAlignment="Center" Foreground="Black"/>
-                    <telerik:RadComboBox Name="cboTowns" IsEditable="True" DisplayMemberPath="TownName" Cursor="Hand" 
-                                         SelectedValuePath="TownId" Grid.Column="7" 
-                                         Text="{Binding Town, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
-                </StackPanel>
-
-
-
-                <Button Name="btnSearch" Content="Pretraga" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Right" Margin="5,5,5,0"
-                                            Width="75" Height="25" Style="{StaticResource GreenButton}" Cursor="Hand"
-                                        Click="btnSearch_Click"/>
-
-                
-
-                <StackPanel Grid.Row="1" Margin="5">
-                    <TextBlock Text="Pocetni" VerticalAlignment="Center" Foreground="Black"/>
-                    <telerik:RadDatePicker  Name="dpOrderStart" Culture="sr-Latn" DateTimeWatermarkContent="Unesi datum"/>
-                </StackPanel>
-
-
-                <StackPanel Grid.Column="1" Grid.Row="1" Margin="5">
-                    <TextBlock Text="Zavrsni" VerticalAlignment="Center" Foreground="Black"/>
-                    <telerik:RadDatePicker  Name="dpOrderEnd"  Grid.Column="3" Culture="sr-Latn" DateTimeWatermarkContent="Unesi datum"/>
-                </StackPanel>
-
-                <StackPanel Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Margin="5">
-                    <TextBlock Text="Status" VerticalAlignment="Center" Foreground="Black"/>
-                    <telerik:RadComboBox Name="cboStatus" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Description" 
-                                        Cursor="Hand" SelectedValuePath="Description"
-                                        Text="{Binding Status, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
-                </StackPanel>
-                    
-                
-            </Grid>
-
-        </Border>
-
-        <telerik:RadGridView Name="dgPerson" AutoGenerateColumns="False" ItemsSource="{Binding}"
-                                         ShowGroupPanel="False" VerticalAlignment="Stretch"  Grid.Row="2"
-                                         Margin="5" IsFilteringAllowed="True" CanUserDeleteRows="False"
-                                         Cursor="Hand" IsSynchronizedWithCurrentItem="False" ShowColumnFooters="True"
-                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                                         RowIndicatorVisibility="Collapsed"  CanUserFreezeColumns="False"
-                                         LoadingRowDetails="dgPerson_LoadingRowDetails">
-
-            <telerik:RadGridView.Resources>
-                <Style TargetType="TextBlock"/>
-            </telerik:RadGridView.Resources>
-
-            <telerik:RadGridView.Columns>
-                <telerik:GridViewColumn UniqueName="tbSwitch">
-                    <telerik:GridViewColumn.CellTemplate>
-                        <DataTemplate>
-                            <ToggleButton Name="tbOrder" Content="+" Padding="0" 
-										      HorizontalContentAlignment="Center"
-											  VerticalContentAlignment="Top"
-                                              Checked="tbOrder_Checked"
-                                              Unchecked="tbOrder_Unchecked"/>
-                        </DataTemplate>
-                    </telerik:GridViewColumn.CellTemplate>
-                </telerik:GridViewColumn>
-                <telerik:GridViewDataColumn Header="Ime" DataMemberBinding="{Binding Person.Name}"  IsReadOnly="True" Width="2*"/>
-                <telerik:GridViewDataColumn Header="Mesto" DataMemberBinding="{Binding Person.Town}"  IsReadOnly="True" Width="1.5*"/>
-                <telerik:GridViewDataColumn Header="Mobilni" DataMemberBinding="{Binding Person.CellPhone}"  IsReadOnly="True" Width="*"/>
-                <telerik:GridViewDataColumn Header="Br.Poruđžbina" DataMemberBinding="{Binding TotalNo}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right" IsReadOnly="True" Width="Auto">
-                    <telerik:GridViewDataColumn.AggregateFunctions>
-                        <telerik:SumFunction  SourceField="TotalNo"/>
-                    </telerik:GridViewDataColumn.AggregateFunctions>
-                    <telerik:GridViewDataColumn.Footer>
-                        <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding FormattedValue}" TextAlignment="Right"/>
-                    </telerik:GridViewDataColumn.Footer>
-                </telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn Header="Duguje" DataMemberBinding="{Binding Due}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right" Width="*">
-                    <telerik:GridViewDataColumn.AggregateFunctions>
-                        <telerik:SumFunction  SourceField="Due" />
-                    </telerik:GridViewDataColumn.AggregateFunctions>
-                    <telerik:GridViewDataColumn.Footer>
-                        <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding FormattedValue}" TextAlignment="Right"/>
-                    </telerik:GridViewDataColumn.Footer>
-                </telerik:GridViewDataColumn>
-            </telerik:RadGridView.Columns>
-            <telerik:RadContextMenu.ContextMenu>
-                <telerik:RadContextMenu  Cursor="Hand">
-                    <telerik:RadContextMenu.Items>
-                        <telerik:RadMenuItem  Header="Nova Poruđžbina" Click="rmiNewOrder_Click"/>
-                        <telerik:RadMenuItem  Header="Azuriraj Poruđžbinu" Click="rmiUpdOrder_Click"/>
-                        <telerik:RadMenuItem  Header="Promeni Status">
-                            <telerik:RadMenuItem  Header="Isporučeno" Click="rmiIspo_Click"/>
-                            <telerik:RadMenuItem  Header="Isporučeno - Plaćeno" Click="rmiIspoPaid_Click"/>
-                            <telerik:RadMenuItem  Header="Otkazano" Click="rmiCancel_Click"/>
-                        </telerik:RadMenuItem>
-                        <telerik:RadMenuSeparatorItem/>
-                        <telerik:RadMenuItem  Header="Izbrisi Poruđžbinu" Click="rmiDelOrder_Click"/>
-                    </telerik:RadContextMenu.Items>
-                </telerik:RadContextMenu>
-            </telerik:RadContextMenu.ContextMenu>
-            <telerik:RadGridView.RowDetailsTemplate>
-                <DataTemplate>
-                    <telerik:RadGridView Name="dgOrder" AutoGenerateColumns="False" ItemsSource="{Binding Person.Orders}"
-                                         ShowGroupPanel="False" Height="Auto" VerticalAlignment="Top" 
-                                         Margin="15,5,0,5" IsFilteringAllowed="True"  CanUserDeleteRows="False"
-                                         Cursor="Hand" IsSynchronizedWithCurrentItem="False"
-                                         RowActivated="dgOrder_RowActivated"
-                                         SelectionChanged="dgOrder_SelectionChanged" >
-
-                        <telerik:RadGridView.FilterDescriptors>
-                            <telerikData:FilterDescriptor Member="Action"
-                                                          Operator="DoesNotContain"
-                                                          Value="D"
-                                                          IsCaseSensitive="False"/>
-                        </telerik:RadGridView.FilterDescriptors>
-                        
-                        <telerik:RadGridView.Resources>
-                            <Style TargetType="TextBlock"/>
-                        </telerik:RadGridView.Resources>
-
-                        <telerik:RadGridView.Columns>
-                            <telerik:GridViewDataColumn Header="Broj Poruđžbine" DataMemberBinding="{Binding OrderNumber}" IsReadOnly="True" Width="*"/>
-                            <telerik:GridViewDataColumn Header="Datum Isporuke" DataMemberBinding="{Binding DeliveryDate}" IsReadOnly="True" Width="*"/>
-                            <telerik:GridViewDataColumn Header="Vreme Isporuke" DataMemberBinding="{Binding DeliveryTime}" IsReadOnly="True" Width="*"/>
-                            <telerik:GridViewDataColumn Header="Datum Poruđžbine" DataMemberBinding="{Binding OrderDate}" IsReadOnly="True" Width="*"/>
-                            <telerik:GridViewDataColumn Header="Vreme Poruđžbine" DataMemberBinding="{Binding OrderTime}" IsReadOnly="True" Width="*"/>
-                        </telerik:RadGridView.Columns>
-                    </telerik:RadGridView>
-                </DataTemplate>
-            </telerik:RadGridView.RowDetailsTemplate>
-        </telerik:RadGridView>
-
-        <telerik:RadTabControl Grid.Row="3" Margin="5,0,5,5" Cursor="Hand">
-            <telerik:RadTabItem x:Name="tbOrderDetails" Header="Poruđžbine" Width="150" >
-                <Grid>
+            <Border x:Name="LinksBorder" Style="{StaticResource NavLinksBorderStyle2}" Margin="5">
+                <Grid Cursor="Hand">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="407*"/>
-                        <ColumnDefinition Width="339*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid.Background>
-                        <ImageBrush ImageSource="Styles/background.jpg"/>
-                    </Grid.Background>
-                    <telerik:RadGridView Name="dgDetails" AutoGenerateColumns="False" ItemsSource="{Binding}"
-                                                     ShowGroupPanel="False" VerticalAlignment="Stretch" IsReadOnly="True"
-                                                     Margin="5" IsFilteringAllowed="True" CanUserDeleteRows="False"
-                                                     Cursor="Hand" IsSynchronizedWithCurrentItem="False" ShowColumnFooters="True"
-                                                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2">
 
-                        
-                        <telerik:RadGridView.Resources>
-                            <Style TargetType="TextBlock"/>
-                        </telerik:RadGridView.Resources>
+                    <Button Name="btnMnuOpt" Click="btnMnuOpt_Click"
+                                            Style="{StaticResource GreenButton}" Margin="5">
+                        <DockPanel>
+                            <Image Width="24" Height="24" Source="Styles/report.png"
+						                            ToolTipService.ToolTip="Unosenje podataka" />
 
-                        <telerik:RadGridView.Columns>
-                            <telerik:GridViewDataColumn Header="Poručeno KG" DataMemberBinding="{Binding OrderKg}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" IsReadOnly="True" Width="*"/>
-                            <telerik:GridViewDataColumn Header="Cena 1 KG" DataMemberBinding="{Binding PricePerKg}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" IsReadOnly="True" Width="*"/>
-                            <telerik:GridViewDataColumn Header="Poručeno RSD" DataMemberBinding="{Binding AmountDue}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right"  IsReadOnly="True" Width="*">
-                                <telerik:GridViewDataColumn.AggregateFunctions>
-                                    <telerik:SumFunction  SourceField="AmountDue"/>
-                                </telerik:GridViewDataColumn.AggregateFunctions>
-                                <telerik:GridViewDataColumn.Footer>
-                                    <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding FormattedValue}"/>
-                                </telerik:GridViewDataColumn.Footer>
-                            </telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn Header="Isporučeno KG" DataMemberBinding="{Binding DeliveredKg}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right"  IsReadOnly="True" Width="*"/>
-                            <telerik:GridViewDataColumn Header="Isporučeno RSD" DataMemberBinding="{Binding AmountPaid}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right"  IsReadOnly="True" Width="*">
-                                <telerik:GridViewDataColumn.AggregateFunctions>
-                                    <telerik:SumFunction  SourceField="AmountPaid"/>
-                                </telerik:GridViewDataColumn.AggregateFunctions>
-                                <telerik:GridViewDataColumn.Footer>
-                                    <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding FormattedValue}"/>
-                                </telerik:GridViewDataColumn.Footer>
-                            </telerik:GridViewDataColumn>
-                            <telerik:GridViewDataColumn Header="Vrsta Ribe" DataMemberBinding="{Binding FishType.Description}" IsReadOnly="True" Width="*"/>
-                            <telerik:GridViewDataColumn Header="Status" DataMemberBinding="{Binding Status.Description}" IsReadOnly="True" Width="*"/>
-                        </telerik:RadGridView.Columns>
-                    </telerik:RadGridView>
+                            <TextBlock Text="Poruđžbina" Margin="5,0,0,0" VerticalAlignment="Center"/>
+
+                            <telerik:RadContextMenu.ContextMenu>
+                                <telerik:RadContextMenu x:Name="OptOrderMenu" Cursor="Hand">
+                                    <telerik:RadContextMenu.Items>
+                                        <telerik:RadMenuItem Name="rmiNewOrder" Header="Nova Poruđžbina" Click="rmiNewOrder_Click"/>
+                                        <telerik:RadMenuItem Name="rmiUpdOrder" Header="Azuriraj Poruđžbinu" Click="rmiUpdOrder_Click" IsEnabled="False"/>
+                                        <telerik:RadMenuSeparatorItem/>
+                                        <telerik:RadMenuItem Name="rmiDelOrder" Header="Izbrisi Poruđžbinu" Click="rmiDelOrder_Click" IsEnabled="False"/>
+                                    </telerik:RadContextMenu.Items>
+                                </telerik:RadContextMenu>
+                            </telerik:RadContextMenu.ContextMenu>
+                        </DockPanel>
+                    </Button>
+                    <Button Name="btnOptions" Grid.Column="1" Click="btnOptions_Click"
+                                            Style="{StaticResource GreenButton}" Margin="5">
+                        <DockPanel>
+                            <Image Width="24" Height="24" Source="Styles/Gear.png"
+						                            ToolTipService.ToolTip="OdŠtampaj izveštaj" />
+
+                            <TextBlock Text="Opcije" Margin="5,0,0,0" VerticalAlignment="Center"/>
+
+                            <telerik:RadContextMenu.ContextMenu>
+                                <telerik:RadContextMenu x:Name="OptMenu" Cursor="Hand">
+                                    <telerik:RadContextMenu.Items>
+                                        <telerik:RadMenuItem Name="rmiNewAccount" Header="Cena Ribe" Click="rmiNewAccount_Click"/>
+                                        <telerik:RadMenuItem Name="rmiStatusChange" Header="Promeni Status">
+                                            <telerik:RadMenuItem Name="rmiIspo" Header="Isporučeno" Click="rmiIspo_Click"/>
+                                            <telerik:RadMenuItem Name="rmiIspoPaid" Header="Isporučeno - Plaćeno" Click="rmiIspoPaid_Click"/>
+                                            <telerik:RadMenuItem Name="rmiCancel" Header="Otkazano" Click="rmiCancel_Click"/>
+                                        </telerik:RadMenuItem>
+                                        <telerik:RadMenuSeparatorItem/>
+                                        <telerik:RadMenuItem Name="rmiReports" Header="Izvestaj" >
+                                            <telerik:RadMenuItem Header="Poruđžbine">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <StackPanel Margin="0,0,5,0">
+                                                        <telerik:RadMenuItem Header="Vreme"/>
+                                                        <telerik:RadTimePicker Name="dpTime" DateTimeWatermarkContent="Unesi vreme" Culture="sr-Latn"/>
+                                                    </StackPanel>
+
+                                                    <StackPanel>
+                                                        <telerik:RadMenuItem Header="Datum Isporuke"/>
+                                                        <telerik:RadDatePicker Name="dpTo" DateTimeWatermarkContent="Unesi datum" Culture="sr-Latn" DropDownClosed="dpTo_DropDownClosed"/>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </telerik:RadMenuItem>
+                                            <telerik:RadMenuItem Header="Isporučeno">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <StackPanel Margin="0,0,5,0">
+                                                        <telerik:RadMenuItem Header="Vreme"/>
+                                                        <telerik:RadTimePicker Name="dpDetTime" DateTimeWatermarkContent="Unesi vreme" Culture="sr-Latn"/>
+                                                    </StackPanel>
+
+                                                    <StackPanel>
+                                                        <telerik:RadMenuItem Header="Datum Isporuke"/>
+                                                        <telerik:RadDatePicker Name="dpDetDate" DateTimeWatermarkContent="Unesi datum" Culture="sr-Latn" DropDownClosed="dpDetDate_DropDownClosed"/>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </telerik:RadMenuItem>
+                                        </telerik:RadMenuItem>
+                                        <telerik:RadMenuSeparatorItem/>
+                                        <telerik:RadMenuItem Name="rmiBackup" Header="Kopiraj Bazu Podataka" Click="rmiBackup_Click"/>
+                                    </telerik:RadContextMenu.Items>
+                                </telerik:RadContextMenu>
+                            </telerik:RadContextMenu.ContextMenu>
+                        </DockPanel>
+                    </Button>
+
+                    <Button Name="btnMnuClose" Grid.Column="2" Click="btnMnuClose_Click"
+                                            Style="{StaticResource GreenButton}" Margin="5">
+                        <DockPanel>
+                            <Image Width="24" Height="24" Source="Styles/exit.png"
+						                            ToolTipService.ToolTip="Zatvori aplikaciju" />
+
+                            <TextBlock Text="Zatvori" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </DockPanel>
+                    </Button>
+                </Grid>
+            </Border>
+
+            <Border Style="{StaticResource ChildBorderStyle}" Margin="5,0" Grid.Row="1">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <StackPanel Grid.Column="0" Margin="5">
+                        <TextBlock Text="Broj Poruđžbine" VerticalAlignment="Center" Foreground="Black"/>
+                        <TextBox Name="txtAccountNo"   KeyUp="txtAccountNo_KeyUp"
+                                        MaxLength="100"  Height="20" />
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Column="1" Grid.ColumnSpan="3" Margin="5">
+                        <TextBlock Text="Ime" VerticalAlignment="Center" Foreground="Black"/>
+                        <telerik:RadComboBox Name="cboContact" IsEditable="True" Cursor="Hand"  
+                                             SelectedValuePath="Person.Name" 
+                                             telerik:TextSearch.TextPath="Person.Name"
+                                             ItemTemplate="{StaticResource ComboContactTemplate}"
+                                             SelectionBoxTemplate="{StaticResource SelectionBoxContact}"
+                                             Text="{Binding Name, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="4" Grid.ColumnSpan="3" Margin="5">
+                        <TextBlock Text="Mesto" VerticalAlignment="Center" Foreground="Black"/>
+                        <telerik:RadComboBox Name="cboTowns" IsEditable="True" DisplayMemberPath="TownName" Cursor="Hand" 
+                                             SelectedValuePath="TownId" Grid.Column="7" 
+                                             Text="{Binding Town, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
+                    </StackPanel>
+
+
+
+                    
+
+                    <Button Name="btnSearch" Content="Pretraga" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Right" Margin="5,5,5,0"
+                                                Width="75" Height="25" Style="{StaticResource GreenButton}" Cursor="Hand"
+                                            Click="btnSearch_Click"/>
+
+                    <Button Name="btnClear" Content="Izbriši" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Right" Margin="5,5,5,0"
+                                                Width="75" Height="25" Style="{StaticResource GreenButton}" Cursor="Hand"
+                                            Click="btnClear_Click"/>
+
+                    <StackPanel Grid.Row="1" Margin="5">
+                        <TextBlock Text="Pocetni" VerticalAlignment="Center" Foreground="Black"/>
+                        <telerik:RadDatePicker  Name="dpOrderStart" Culture="sr-Latn" DateTimeWatermarkContent="Unesi datum"/>
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Column="1" Grid.Row="1" Margin="5">
+                        <TextBlock Text="Zavrsni" VerticalAlignment="Center" Foreground="Black"/>
+                        <telerik:RadDatePicker  Name="dpOrderEnd"  Grid.Column="3" Culture="sr-Latn" DateTimeWatermarkContent="Unesi datum"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Margin="5">
+                        <TextBlock Text="Status" VerticalAlignment="Center" Foreground="Black"/>
+                        <telerik:RadComboBox Name="cboStatus" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Description" 
+                                            Cursor="Hand" SelectedValuePath="Description"
+                                            Text="{Binding Status, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
+                    </StackPanel>
+
 
                 </Grid>
-            </telerik:RadTabItem>
-        </telerik:RadTabControl>
+
+            </Border>
+
+            <telerik:RadGridView Name="dgPerson" AutoGenerateColumns="False" ItemsSource="{Binding}"
+                                             ShowGroupPanel="False" VerticalAlignment="Stretch"  Grid.Row="2"
+                                             Margin="5" IsFilteringAllowed="True" CanUserDeleteRows="False"
+                                             Cursor="Hand" IsSynchronizedWithCurrentItem="False" ShowColumnFooters="True"
+                                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                             RowIndicatorVisibility="Collapsed"  CanUserFreezeColumns="False"
+                                             LoadingRowDetails="dgPerson_LoadingRowDetails">
+
+                <telerik:RadGridView.Resources>
+                    <Style TargetType="TextBlock"/>
+                </telerik:RadGridView.Resources>
+
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewColumn UniqueName="tbSwitch">
+                        <telerik:GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ToggleButton Name="tbOrder" Content="+" Padding="0" 
+										          HorizontalContentAlignment="Center"
+											      VerticalContentAlignment="Top"
+                                                  Checked="tbOrder_Checked"
+                                                  Unchecked="tbOrder_Unchecked"/>
+                            </DataTemplate>
+                        </telerik:GridViewColumn.CellTemplate>
+                    </telerik:GridViewColumn>
+                    <telerik:GridViewDataColumn Header="Ime" DataMemberBinding="{Binding Person.Name}"  IsReadOnly="True" Width="2*"/>
+                    <telerik:GridViewDataColumn Header="Mesto" DataMemberBinding="{Binding Person.Town}"  IsReadOnly="True" Width="1.5*"/>
+                    <telerik:GridViewDataColumn Header="Mobilni" DataMemberBinding="{Binding Person.CellPhone}"  IsReadOnly="True" Width="*"/>
+                    <telerik:GridViewDataColumn Header="Br.Poruđžbina" DataMemberBinding="{Binding TotalNo}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right" IsReadOnly="True" Width="Auto">
+                        <telerik:GridViewDataColumn.AggregateFunctions>
+                            <telerik:SumFunction  SourceField="TotalNo"/>
+                        </telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:GridViewDataColumn.Footer>
+                            <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding FormattedValue}" TextAlignment="Right"/>
+                        </telerik:GridViewDataColumn.Footer>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Header="Duguje" DataMemberBinding="{Binding Due}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right" Width="*">
+                        <telerik:GridViewDataColumn.AggregateFunctions>
+                            <telerik:SumFunction  SourceField="Due" />
+                        </telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:GridViewDataColumn.Footer>
+                            <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding FormattedValue}" TextAlignment="Right"/>
+                        </telerik:GridViewDataColumn.Footer>
+                    </telerik:GridViewDataColumn>
+                </telerik:RadGridView.Columns>
+                <telerik:RadContextMenu.ContextMenu>
+                    <telerik:RadContextMenu  Cursor="Hand">
+                        <telerik:RadContextMenu.Items>
+                            <telerik:RadMenuItem  Header="Nova Poruđžbina" Click="rmiNewOrder_Click"/>
+                            <telerik:RadMenuItem  Header="Azuriraj Poruđžbinu" Click="rmiUpdOrder_Click"/>
+                            <telerik:RadMenuItem  Header="Promeni Status">
+                                <telerik:RadMenuItem  Header="Isporučeno" Click="rmiIspo_Click"/>
+                                <telerik:RadMenuItem  Header="Isporučeno - Plaćeno" Click="rmiIspoPaid_Click"/>
+                                <telerik:RadMenuItem  Header="Otkazano" Click="rmiCancel_Click"/>
+                            </telerik:RadMenuItem>
+                            <telerik:RadMenuSeparatorItem/>
+                            <telerik:RadMenuItem  Header="Izbrisi Poruđžbinu" Click="rmiDelOrder_Click"/>
+                        </telerik:RadContextMenu.Items>
+                    </telerik:RadContextMenu>
+                </telerik:RadContextMenu.ContextMenu>
+                <telerik:RadGridView.RowDetailsTemplate>
+                    <DataTemplate>
+                        <telerik:RadGridView Name="dgOrder" AutoGenerateColumns="False" ItemsSource="{Binding Person.Orders}"
+                                             ShowGroupPanel="False" Height="Auto" VerticalAlignment="Top" 
+                                             Margin="15,5,0,5" IsFilteringAllowed="True"  CanUserDeleteRows="False"
+                                             Cursor="Hand" IsSynchronizedWithCurrentItem="False"
+                                             RowActivated="dgOrder_RowActivated"
+                                             SelectionChanged="dgOrder_SelectionChanged" >
+
+                            <telerik:RadGridView.FilterDescriptors>
+                                <telerikData:FilterDescriptor Member="Action"
+                                                              Operator="DoesNotContain"
+                                                              Value="D"
+                                                              IsCaseSensitive="False"/>
+                            </telerik:RadGridView.FilterDescriptors>
+
+                            <telerik:RadGridView.Resources>
+                                <Style TargetType="TextBlock"/>
+                            </telerik:RadGridView.Resources>
+
+                            <telerik:RadGridView.Columns>
+                                <telerik:GridViewDataColumn Header="Broj Poruđžbine" DataMemberBinding="{Binding OrderNumber}" IsReadOnly="True" Width="*"/>
+                                <telerik:GridViewDataColumn Header="Datum Isporuke" DataMemberBinding="{Binding DeliveryDate}" IsReadOnly="True" Width="*"/>
+                                <telerik:GridViewDataColumn Header="Vreme Isporuke" DataMemberBinding="{Binding DeliveryTime}" IsReadOnly="True" Width="*"/>
+                                <telerik:GridViewDataColumn Header="Datum Poruđžbine" DataMemberBinding="{Binding OrderDate}" IsReadOnly="True" Width="*"/>
+                                <telerik:GridViewDataColumn Header="Vreme Poruđžbine" DataMemberBinding="{Binding OrderTime}" IsReadOnly="True" Width="*"/>
+                            </telerik:RadGridView.Columns>
+                        </telerik:RadGridView>
+                    </DataTemplate>
+                </telerik:RadGridView.RowDetailsTemplate>
+            </telerik:RadGridView>
+
+            <telerik:RadTabControl Grid.Row="3" Margin="5,0,5,5" Cursor="Hand">
+                <telerik:RadTabItem x:Name="tbOrderDetails" Header="Poruđžbine" Width="150" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="407*"/>
+                            <ColumnDefinition Width="339*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Background>
+                            <ImageBrush ImageSource="Styles/background.jpg"/>
+                        </Grid.Background>
+                        <telerik:RadGridView Name="dgDetails" AutoGenerateColumns="False" ItemsSource="{Binding}"
+                                                         ShowGroupPanel="False" VerticalAlignment="Stretch" IsReadOnly="True"
+                                                         Margin="5" IsFilteringAllowed="True" CanUserDeleteRows="False"
+                                                         Cursor="Hand" IsSynchronizedWithCurrentItem="False" ShowColumnFooters="True"
+                                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2">
+
+
+                            <telerik:RadGridView.Resources>
+                                <Style TargetType="TextBlock"/>
+                            </telerik:RadGridView.Resources>
+
+                            <telerik:RadGridView.Columns>
+                                <telerik:GridViewDataColumn Header="Poručeno KG" DataMemberBinding="{Binding OrderKg}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right"  IsReadOnly="True" Width="*">
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:SumFunction  SourceField="OrderKg"/>
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                    <telerik:GridViewDataColumn.Footer>
+                                        <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding FormattedValue}" TextAlignment="Right"/>
+                                    </telerik:GridViewDataColumn.Footer>
+                                </telerik:GridViewDataColumn>
+                                
+                                <telerik:GridViewDataColumn Header="Cena 1 KG" DataMemberBinding="{Binding PricePerKg}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" IsReadOnly="True" Width="*"/>
+                                <telerik:GridViewDataColumn Header="Poručeno RSD" DataMemberBinding="{Binding AmountDue}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right"  IsReadOnly="True" Width="*">
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:SumFunction  SourceField="AmountDue" />
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                    <telerik:GridViewDataColumn.Footer>
+                                        <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding FormattedValue}"/>
+                                    </telerik:GridViewDataColumn.Footer>
+                                </telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn Header="Isporučeno KG" DataMemberBinding="{Binding DeliveredKg}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right" IsReadOnly="True" Width="*">
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:SumFunction  SourceField="DeliveredKg"/>
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                    <telerik:GridViewDataColumn.Footer>
+                                        <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding FormattedValue}"/>
+                                    </telerik:GridViewDataColumn.Footer>
+                                </telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn Header="Isporučeno RSD" DataMemberBinding="{Binding AmountPaid}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right"  IsReadOnly="True" Width="*">
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:SumFunction  SourceField="AmountPaid"/>
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+                                    <telerik:GridViewDataColumn.Footer>
+                                        <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding FormattedValue}"/>
+                                    </telerik:GridViewDataColumn.Footer>
+                                </telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn Header="Vrsta Ribe" DataMemberBinding="{Binding FishType.Description}" IsReadOnly="True" Width="*"/>
+                                <telerik:GridViewDataColumn Header="Status" DataMemberBinding="{Binding Status.Description}" IsReadOnly="True" Width="*"/>
+                            </telerik:RadGridView.Columns>
+                        </telerik:RadGridView>
+
+                    </Grid>
+                </telerik:RadTabItem>
+            </telerik:RadTabControl>
+
+        </Grid>
+        <fa:ImageAwesome x:Name="spinner" Icon="Refresh" Spin="True" Height="48" Width="48" Visibility="Hidden" />
     </Grid>
+        
+    
 </Window>

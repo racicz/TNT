@@ -87,3 +87,5 @@ C:\Projects\TNT\TNT\obj\Debug\TNT.csproj.CoreCompileInputs.cache
 C:\Projects\TNT\TNT\obj\Debug\TNT.csproj.CopyComplete
 C:\Projects\TNT\TNT\obj\Debug\TNT.exe
 C:\Projects\TNT\TNT\obj\Debug\TNT.pdb
+C:\Projects\TNT\TNT\bin\Debug\FontAwesome.WPF.dll
+C:\Projects\TNT\TNT\bin\Debug\FontAwesome.WPF.xml
