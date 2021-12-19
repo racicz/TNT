@@ -1,0 +1,14 @@
+C:\Projects\TNT\WebAPI\TNT.Shared\bin\Debug\net6.0\TNT.Shared.deps.json
+C:\Projects\TNT\WebAPI\TNT.Shared\bin\Debug\net6.0\TNT.Shared.runtimeconfig.json
+C:\Projects\TNT\WebAPI\TNT.Shared\bin\Debug\net6.0\TNT.Shared.dll
+C:\Projects\TNT\WebAPI\TNT.Shared\bin\Debug\net6.0\ref\TNT.Shared.dll
+C:\Projects\TNT\WebAPI\TNT.Shared\bin\Debug\net6.0\TNT.Shared.pdb
+C:\Projects\TNT\WebAPI\TNT.Shared\obj\Debug\net6.0\TNT.Shared.csproj.AssemblyReference.cache
+C:\Projects\TNT\WebAPI\TNT.Shared\obj\Debug\net6.0\TNT.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\TNT\WebAPI\TNT.Shared\obj\Debug\net6.0\TNT.Shared.AssemblyInfoInputs.cache
+C:\Projects\TNT\WebAPI\TNT.Shared\obj\Debug\net6.0\TNT.Shared.AssemblyInfo.cs
+C:\Projects\TNT\WebAPI\TNT.Shared\obj\Debug\net6.0\TNT.Shared.csproj.CoreCompileInputs.cache
+C:\Projects\TNT\WebAPI\TNT.Shared\obj\Debug\net6.0\TNT.Shared.dll
+C:\Projects\TNT\WebAPI\TNT.Shared\obj\Debug\net6.0\ref\TNT.Shared.dll
+C:\Projects\TNT\WebAPI\TNT.Shared\obj\Debug\net6.0\TNT.Shared.pdb
+C:\Projects\TNT\WebAPI\TNT.Shared\obj\Debug\net6.0\TNT.Shared.genruntimeconfig.cache

@@ -1,0 +1,17 @@
+C:\Projects\TNT\WebAPI\TNT.Data\bin\Debug\net6.0\TNT.Data.deps.json
+C:\Projects\TNT\WebAPI\TNT.Data\bin\Debug\net6.0\TNT.Data.runtimeconfig.json
+C:\Projects\TNT\WebAPI\TNT.Data\bin\Debug\net6.0\TNT.Data.dll
+C:\Projects\TNT\WebAPI\TNT.Data\bin\Debug\net6.0\ref\TNT.Data.dll
+C:\Projects\TNT\WebAPI\TNT.Data\bin\Debug\net6.0\TNT.Data.pdb
+C:\Projects\TNT\WebAPI\TNT.Data\bin\Debug\net6.0\TNT.Shared.dll
+C:\Projects\TNT\WebAPI\TNT.Data\bin\Debug\net6.0\TNT.Shared.pdb
+C:\Projects\TNT\WebAPI\TNT.Data\obj\Debug\net6.0\TNT.Data.csproj.AssemblyReference.cache
+C:\Projects\TNT\WebAPI\TNT.Data\obj\Debug\net6.0\TNT.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\TNT\WebAPI\TNT.Data\obj\Debug\net6.0\TNT.Data.AssemblyInfoInputs.cache
+C:\Projects\TNT\WebAPI\TNT.Data\obj\Debug\net6.0\TNT.Data.AssemblyInfo.cs
+C:\Projects\TNT\WebAPI\TNT.Data\obj\Debug\net6.0\TNT.Data.csproj.CoreCompileInputs.cache
+C:\Projects\TNT\WebAPI\TNT.Data\obj\Debug\net6.0\TNT.Data.csproj.CopyComplete
+C:\Projects\TNT\WebAPI\TNT.Data\obj\Debug\net6.0\TNT.Data.dll
+C:\Projects\TNT\WebAPI\TNT.Data\obj\Debug\net6.0\ref\TNT.Data.dll
+C:\Projects\TNT\WebAPI\TNT.Data\obj\Debug\net6.0\TNT.Data.pdb
+C:\Projects\TNT\WebAPI\TNT.Data\obj\Debug\net6.0\TNT.Data.genruntimeconfig.cache

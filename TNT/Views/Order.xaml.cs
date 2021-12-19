@@ -136,6 +136,7 @@ namespace TNT.Views
         {
             if (IsDetailFormValid.Length == 0)
             {
+                var prep = GetPreparationList;
 
                 if (dgDetail.SelectedItem != null && (dgDetail.SelectedItem as OrderDetail).FishTypeId == ordDetailBind.FishTypeId)
                 {
@@ -149,7 +150,8 @@ namespace TNT.Views
                         {
                             Description = cboFishTypes.Text,
                             Price = (cboFishTypes.SelectedItem as FishType).Price,
-                            Preparations = GetPreparationList
+                            PrepSelected = prep != null && prep.Count() > 0 ? prep.Select(x=>x.Description).FirstOrDefault() : string.Empty,
+                            Preparations = prep
                         };
                         detail.StatusId = cboStatus.SelectedItem != null ? (cboStatus.SelectedItem as Status).StatusId : 1;
                         detail.Status = new Status()
@@ -180,7 +182,8 @@ namespace TNT.Views
                         {
                             Description = cboFishTypes.Text,
                             Price = (cboFishTypes.SelectedItem as FishType).Price,
-                            Preparations = GetPreparationList
+                            PrepSelected = prep != null && prep.Count() > 0 ? prep.Select(x => x.Description).FirstOrDefault() : string.Empty,
+                            Preparations = prep
                         },
                         StatusId = cboStatus.SelectedItem != null ? (cboStatus.SelectedItem as Status).StatusId : 1,
                         Status = new Status()
@@ -215,6 +218,7 @@ namespace TNT.Views
                 if (ordDetailBind.DetailId > 0)
                 {
                     var detail = details.Where(t => t.OrderDetailId == ordDetailBind.DetailId).FirstOrDefault();
+                    var prep = GetPreparationList;
 
                     if (detail != null)
                     {
@@ -224,7 +228,8 @@ namespace TNT.Views
                         {
                             Description = cboFishTypes.Text,
                             Price = (cboFishTypes.SelectedItem as FishType).Price,
-                            Preparations = GetPreparationList
+                            PrepSelected = prep != null && prep.Count() > 0 ? prep.Select(x => x.Description).FirstOrDefault() : string.Empty,
+                            Preparations = prep
                         };
                         detail.StatusId = cboStatus.SelectedItem != null ? (cboStatus.SelectedItem as Status).StatusId : 1;
                         detail.Status = new Status()
@@ -257,7 +262,7 @@ namespace TNT.Views
             {
                 string preparations = string.Empty;
 
-                if (ordDetailBind.Pohovana || ordDetailBind.Przena || ordDetailBind.Dimljena || ordDetailBind.Sveza || ordDetailBind.Ociscena)
+                if (ordDetailBind.Pohovana || ordDetailBind.Przena || ordDetailBind.Dimljena || ordDetailBind.Sveza || ordDetailBind.Ociscena || ordDetailBind.DimljenaPrzena || ordDetailBind.PecenaRostilj)
                 {
                     if (ordDetailBind.Przena)
                         preparations = "1";
@@ -285,6 +290,18 @@ namespace TNT.Views
                             preparations += ",5";
                         else
                             preparations = "5";
+
+                    if (ordDetailBind.DimljenaPrzena)
+                        if (!string.IsNullOrEmpty(preparations))
+                            preparations += ",6";
+                        else
+                            preparations = "6";
+
+                    if (ordDetailBind.PecenaRostilj)
+                        if (!string.IsNullOrEmpty(preparations))
+                            preparations += ",7";
+                        else
+                            preparations = "7";
                 }
 
                 if (!preparations.EndsWith(","))
@@ -300,7 +317,7 @@ namespace TNT.Views
             {
                 List<Preparation> preparations = new List<Preparation>();
 
-                if (ordDetailBind.Pohovana || ordDetailBind.Przena || ordDetailBind.Dimljena || ordDetailBind.Sveza || ordDetailBind.Ociscena)
+                if (ordDetailBind.Pohovana || ordDetailBind.Przena || ordDetailBind.Dimljena || ordDetailBind.Sveza || ordDetailBind.Ociscena || ordDetailBind.DimljenaPrzena || ordDetailBind.PecenaRostilj)
                 {
                     if (ordDetailBind.Przena)
                         preparations.Add(new Preparation()
@@ -335,6 +352,20 @@ namespace TNT.Views
                         {
                             PreparationId = 5,
                             Description = "Ociscena"
+                        });
+
+                    if (ordDetailBind.DimljenaPrzena)
+                        preparations.Add(new Preparation()
+                        {
+                            PreparationId = 6,
+                            Description = "Dimljena & Przena"
+                        });
+
+                    if (ordDetailBind.PecenaRostilj)
+                        preparations.Add(new Preparation()
+                        {
+                            PreparationId = 7,
+                            Description = "Pecena Rostilj"
                         });
                 }
 
@@ -481,25 +512,33 @@ namespace TNT.Views
                 ordDetailBind.Pohovana = false;
                 ordDetailBind.Sveza = false;
                 ordDetailBind.Ociscena = false;
+                ordDetailBind.DimljenaPrzena = false;
+                ordDetailBind.PecenaRostilj = false;
 
                 if (value.Preparations != null)
                 {
                     value.Preparations.ForEach(t =>
                     {
-                        if (t.Description.ToUpper() == "PRZENA")
+                        if (t.PreparationId == 1)
                             ordDetailBind.Przena = true;
 
-                        if (t.Description.ToUpper() == "DIMLJENA")
+                        if (t.PreparationId == 2)
                             ordDetailBind.Dimljena = true;
 
-                        if (t.Description.ToUpper() == "POHOVANA")
+                        if (t.PreparationId == 3)
                             ordDetailBind.Pohovana = true;
 
-                        if (t.Description.ToUpper() == "SVEZA")
+                        if (t.PreparationId == 4)
                             ordDetailBind.Sveza = true;
 
-                        if (t.Description.ToUpper() == "OCISCENA")
+                        if (t.PreparationId == 5)
                             ordDetailBind.Ociscena = true;
+
+                        if (t.PreparationId == 6)
+                            ordDetailBind.DimljenaPrzena = true;
+
+                        if (t.PreparationId == 7)
+                            ordDetailBind.PecenaRostilj = true;
                     });
                 }
             }

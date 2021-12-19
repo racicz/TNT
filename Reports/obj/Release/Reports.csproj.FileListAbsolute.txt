@@ -26,3 +26,4 @@ C:\Projects\TNT\Reports\obj\Release\Reports.dll
 C:\Projects\TNT\Reports\obj\Release\Reports.pdb
 C:\Projects\TNT\Reports\bin\Release\Telerik.Reporting.dll
 C:\Projects\TNT\Reports\obj\Release\Reports.OrderSubReport.resources
+C:\Projects\TNT\Reports\obj\Release\Reports.csproj.AssemblyReference.cache

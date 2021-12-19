@@ -20,6 +20,8 @@ namespace TNT.Helper
         bool pohovana;
         bool sveza;
         bool ociscena;
+        bool dimljenaPrzena;
+        bool pecenaRostilj;
         string notes;
         string status;
 
@@ -139,6 +141,34 @@ namespace TNT.Helper
                 {
                     ociscena = value;
                     OnPropertyChanged("Ociscena");
+                }
+
+            }
+        }
+
+        public bool DimljenaPrzena
+        {
+            get { return dimljenaPrzena; }
+            set
+            {
+                if (value != dimljenaPrzena)
+                {
+                    dimljenaPrzena = value;
+                    OnPropertyChanged("DimljenaPrzena");
+                }
+
+            }
+        }
+
+        public bool PecenaRostilj
+        {
+            get { return pecenaRostilj; }
+            set
+            {
+                if (value != pecenaRostilj)
+                {
+                    pecenaRostilj = value;
+                    OnPropertyChanged("PecenaRostilj");
                 }
 
             }

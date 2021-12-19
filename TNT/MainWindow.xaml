@@ -369,6 +369,7 @@
                                     </telerik:GridViewDataColumn.Footer>
                                 </telerik:GridViewDataColumn>
                                 <telerik:GridViewDataColumn Header="Vrsta Ribe" DataMemberBinding="{Binding FishType.Description}" IsReadOnly="True" Width="*"/>
+                                <telerik:GridViewDataColumn Header="Priprema" DataMemberBinding="{Binding FishType.PrepSelected}" IsReadOnly="True" Width="*"/>
                                 <telerik:GridViewDataColumn Header="Status" DataMemberBinding="{Binding Status.Description}" IsReadOnly="True" Width="*"/>
                             </telerik:RadGridView.Columns>
                         </telerik:RadGridView>

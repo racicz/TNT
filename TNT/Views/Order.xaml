@@ -169,7 +169,10 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
 
                             <RadioButton Grid.Row="0" Content="Pržena" Foreground="LightGray" Margin="5,0,5,5"
                                       IsChecked="{Binding Przena,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
@@ -181,6 +184,10 @@
                                       IsChecked="{Binding Sveza,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
                             <RadioButton Grid.Row="4" Content="Očišćena" Foreground="LightGray" Margin="5,5,5,0"
                                       IsChecked="{Binding Ociscena,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
+                            <RadioButton Grid.Row="0" Grid.Column="1" Content="Dimljena &amp; Pržena" Foreground="LightGray" Margin="5"
+                                      IsChecked="{Binding DimljenaPrzena,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
+                            <RadioButton Grid.Row="1" Grid.Column="1" Content="Pečena na roštilju" Foreground="LightGray" Margin="5,5,5,0"
+                                      IsChecked="{Binding PecenaRostilj,Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
                         </Grid>
                     </Border>
                 </StackPanel>
@@ -258,7 +265,6 @@
             </telerik:RadGridView.Resources>
 
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn Header="Vrsta Ribe" DataMemberBinding="{Binding FishType.Description}"  IsReadOnly="True" Width="1.5*"/>
                 <telerik:GridViewDataColumn Header="Poručeno KG" DataMemberBinding="{Binding OrderKg}" DataFormatString="{}{0:N2}"  IsReadOnly="True" Width="*"/>
                 <telerik:GridViewDataColumn Header="Cena 1 KG" DataMemberBinding="{Binding PricePerKg}"  DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right" IsReadOnly="True" Width="*"/>
                 <telerik:GridViewDataColumn Header="Poručeno RSD" DataMemberBinding="{Binding AmountDue}" DataFormatString="{}{0:N2}" HeaderTextAlignment="Right" TextAlignment="Right" FooterTextAlignment="Right"  IsReadOnly="True" Width="*">
@@ -269,6 +275,8 @@
                         <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding FormattedValue}"/>
                     </telerik:GridViewDataColumn.Footer>
                 </telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="Vrsta Ribe" DataMemberBinding="{Binding FishType.Description}"  IsReadOnly="True" Width="1.5*"/>
+                <telerik:GridViewDataColumn Header="Priprema" DataMemberBinding="{Binding FishType.PrepSelected}"  IsReadOnly="True" Width="1.5*"/>
                 <telerik:GridViewDataColumn Header="Status" DataMemberBinding="{Binding Status.Description}"  IsReadOnly="True" Width="*"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>

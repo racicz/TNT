@@ -430,12 +430,14 @@ namespace TNT_Library
             {
                 using (cnn = new SqlConnection(strConn))
                 {
-                    using (cmd = new SqlCommand(string.Format(@"SELECT OrderDetailId, OrderKg, PricePerKg, DeliveredKg, AmountDue, 
-                                                                        AmountPaid, FishType.FishTypeId, FishType.Description [FishType], 
-                                                                        Status.StatusId, Status.Description [Status], OrderDetail.Notes
-                                                                    FROM OrderDetail inner join
-			                                                             FishType on OrderDetail.FishTypeId = FishType.FishTypeId inner join
-			                                                             Status on OrderDetail.StatusId = Status.StatusId
+                    using (cmd = new SqlCommand(string.Format(@"SELECT OrderDetail.OrderDetailId, OrderKg, PricePerKg, DeliveredKg, AmountDue, 
+                                                                    AmountPaid, FishType.FishTypeId, FishType.Description [FishType], p.Description [Preparation],
+                                                                    Status.StatusId, Status.Description [Status], OrderDetail.Notes
+                                                                FROM OrderDetail inner join
+			                                                            FishType on OrderDetail.FishTypeId = FishType.FishTypeId inner join
+			                                                            Status on OrderDetail.StatusId = Status.StatusId left join
+				                                                        OrderDetailPreparation odp on OrderDetail.OrderDetailId = odp.OrderDetailId left join
+				                                                        Preparation p on odp.PreparationId = p.PreparationId
                                                                 Where OrderDetail.Deleted = 0 and OrderDetail.OrderId = {0}
                                                             Order by OrderDetailId desc", orderId), cnn))
                     {
@@ -459,7 +461,8 @@ namespace TNT_Library
                                     FishTypeId = Convert.ToInt32(dr["FishTypeId"]),
                                     Description = dr["FishType"] != DBNull.Value ? dr["FishType"].ToString() : string.Empty,
                                     Price = (dr["AmountDue"] != DBNull.Value ? Convert.ToDecimal(dr["AmountDue"], ci) : 0) > 0 ? ((dr["AmountDue"] != DBNull.Value ? Convert.ToDecimal(dr["AmountDue"], ci) : 0) / (dr["OrderKg"] != DBNull.Value ? Convert.ToDecimal(dr["OrderKg"], ci) : 0)) : 0,
-                                    Preparations = GetFishTypePreparation(Convert.ToInt32(dr["OrderDetailId"]), "order")
+                                    Preparations = GetFishTypePreparation(Convert.ToInt32(dr["OrderDetailId"]), "order"),
+                                    PrepSelected = dr["Preparation"] != DBNull.Value ? dr["Preparation"].ToString() : string.Empty
                                 },
                                 StatusId = Convert.ToInt32(dr["StatusId"]),
                                 Status = new Status()

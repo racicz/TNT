@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e203222d-3675-4dc7-8c00-9eea424265df": {
+      "ProjectGuid": "e203222d-3675-4dc7-8c00-9eea424265df",
+      "DisplayName": "TNT.WebAPI",
+      "ColorIndex": 0
+    },
+    "a5d64ba4-9e66-41f9-86f3-965d37ae4d5f": {
+      "ProjectGuid": "a5d64ba4-9e66-41f9-86f3-965d37ae4d5f",
+      "DisplayName": "TNT.Business",
+      "ColorIndex": 1
+    },
+    "6f003976-1374-4b95-94ea-ef191d9b552d": {
+      "ProjectGuid": "6f003976-1374-4b95-94ea-ef191d9b552d",
+      "DisplayName": "TNT.Shared",
+      "ColorIndex": 2
+    },
+    "19205bab-aae5-43ed-ba34-2d97d653cb4e": {
+      "ProjectGuid": "19205bab-aae5-43ed-ba34-2d97d653cb4e",
+      "DisplayName": "TNT.Data",
+      "ColorIndex": 3
+    },
+    "6ed77bbc-dc6e-4248-9c58-bb240f3568eb": {
+      "ProjectGuid": "6ed77bbc-dc6e-4248-9c58-bb240f3568eb",
+      "DisplayName": "TNT.Data",
+      "ColorIndex": 4
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "cc847a4c-04e7-447c-8154-47d110b3a52e": {
+      "ProjectGuid": "cc847a4c-04e7-447c-8154-47d110b3a52e",
+      "DisplayName": "TNT.EmailService",
+      "ColorIndex": 5
+    }
+  },
+  "NextColorIndex": 6
+}

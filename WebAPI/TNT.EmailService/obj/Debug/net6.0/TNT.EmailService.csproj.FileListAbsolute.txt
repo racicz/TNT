@@ -1,0 +1,12 @@
+C:\Projects\TNT\WebAPI\TNT.EmailService\bin\Debug\net6.0\TNT.EmailService.deps.json
+C:\Projects\TNT\WebAPI\TNT.EmailService\bin\Debug\net6.0\TNT.EmailService.dll
+C:\Projects\TNT\WebAPI\TNT.EmailService\bin\Debug\net6.0\ref\TNT.EmailService.dll
+C:\Projects\TNT\WebAPI\TNT.EmailService\bin\Debug\net6.0\TNT.EmailService.pdb
+C:\Projects\TNT\WebAPI\TNT.EmailService\obj\Debug\net6.0\TNT.EmailService.csproj.AssemblyReference.cache
+C:\Projects\TNT\WebAPI\TNT.EmailService\obj\Debug\net6.0\TNT.EmailService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\TNT\WebAPI\TNT.EmailService\obj\Debug\net6.0\TNT.EmailService.AssemblyInfoInputs.cache
+C:\Projects\TNT\WebAPI\TNT.EmailService\obj\Debug\net6.0\TNT.EmailService.AssemblyInfo.cs
+C:\Projects\TNT\WebAPI\TNT.EmailService\obj\Debug\net6.0\TNT.EmailService.csproj.CoreCompileInputs.cache
+C:\Projects\TNT\WebAPI\TNT.EmailService\obj\Debug\net6.0\TNT.EmailService.dll
+C:\Projects\TNT\WebAPI\TNT.EmailService\obj\Debug\net6.0\ref\TNT.EmailService.dll
+C:\Projects\TNT\WebAPI\TNT.EmailService\obj\Debug\net6.0\TNT.EmailService.pdb
