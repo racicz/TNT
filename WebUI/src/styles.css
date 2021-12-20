@@ -1,22 +1,47 @@
 .mat-focused .mat-form-field-label {
-    /*change color of label*/
-    color: black !important;
-   }
-  
-   .mat-form-field-underline {
-    /*change color of underline*/
+/*change color of label*/
+color: black !important;
+}
+
+.mat-form-field-underline {
+/*change color of underline*/
+background-color: black !important;
+} 
+
+.mat-form-field-ripple {
+/*change color of underline when focused*/
+background-color: black !important;;
+}
+
+.mat-form-field{
+    width: 100%;
+}
+
+.m-top-100{
+    margin-top: 100px;
+}
+
+.bg-cover .container {
+    max-width: 95%;
+    margin-top: 200px;
+}
+
+.bg-cover .container .mat-tab-group {
+    width: 100%;
+    border-radius: 5px;
+    background: white;
+}
+
+.bg-cover .container .mat-tab-group .mat-tab-body {
+    height: 400px;
+}
+
+.mat-ink-bar{
     background-color: black !important;
-  } 
-  
-  .mat-form-field-ripple {
-   /*change color of underline when focused*/
-   background-color: black !important;;
-  }
+}
 
-  .mat-form-field{
-      width: 100%;
-  }
 
-  .m-top-100{
-      margin-top: 100px;
-  }
+/*change color of material table*/
+.mat-table .mat-header-cell{
+    background: white !important;
+}
