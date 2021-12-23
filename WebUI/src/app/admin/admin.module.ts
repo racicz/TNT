@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from '../app-routing.module';
 import { SearchComponent } from './search/search.component';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -14,7 +15,12 @@ import { SearchComponent } from './search/search.component';
   ],
   imports: [
    MatTabsModule,
-   MatTableModule
+   MatTableModule,
+   MatFormFieldModule,
+   MatInputModule,
+   MatSelectModule,
+   MatDatepickerModule,
+   MatIconModule
   ],
   providers: [],
   bootstrap: [SearchComponent]

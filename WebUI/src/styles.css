@@ -17,8 +17,32 @@ background-color: black !important;;
     width: 100%;
 }
 
+/*margins*/
 .m-top-100{
     margin-top: 100px;
+}
+
+.m-top-50{
+    margin-top: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.m-left-5{
+    margin-left: 5px;
+}
+
+.m-right-5{
+    margin-right: 5px;
+}
+
+.radius-5{
+    border-radius: 5px;
+    height: 100%;
+}
+
+.radius-5 .auth-form{
+    width: 100%;
 }
 
 .bg-cover .container {
@@ -26,11 +50,11 @@ background-color: black !important;;
     margin-top: 200px;
 }
 
-.bg-cover .container .mat-tab-group {
+/* .bg-cover .container .mat-tab-group {
     width: 100%;
     border-radius: 5px;
     background: white;
-}
+} */
 
 .bg-cover .container .mat-tab-group .mat-tab-body {
     height: 400px;
@@ -45,3 +69,32 @@ background-color: black !important;;
 .mat-table .mat-header-cell{
     background: white !important;
 }
+
+.container-p-5 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.auth-form {
+    height: 100%;
+}
+
+.verybottom {
+    position: absolute;
+    bottom: 0px;
+    padding-left: -15px;
+  }
+
+  .mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .mat-row:hover .mat-cell {
+    border-color: currentColor;
+  }
+  
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }

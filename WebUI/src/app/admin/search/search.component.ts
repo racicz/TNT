@@ -19,6 +19,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 ];
+
+export interface Customer {
+  orderNumber: number;
+  name: string;
+  amountDue: number;
+}
+
+const CUST_DATA: Customer[] = [
+  {orderNumber: 100, name: 'Milan Bajic', amountDue: 250.00},
+  {orderNumber: 200, name: 'Stoja Ristic', amountDue: 150.00},
+  {orderNumber: 300, name: 'Tanja Savic', amountDue: 75.00},
+];
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html'
@@ -27,7 +40,11 @@ export class SearchComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
-  
+
+  custColumns: string[] = ['orderNumber', 'name', 'amountDue', 'actions'];
+  custDataSource = CUST_DATA;
+  clickedRows = new Set<Customer>();
+
   constructor() { }
 
   ngOnInit(): void {

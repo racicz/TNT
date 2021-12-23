@@ -26,6 +26,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { LoginComponent } from './site/login/login.component';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { LoginComponent } from './site/login/login.component';
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatTooltipModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatMomentDateModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
