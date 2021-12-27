@@ -1005,7 +1005,7 @@ textarea{
   font-size: 12px;
 }
 input[type="submit"]:disabled, button[type="submit"]:disabled {
-  background-color: #e4e3e8;
+  background-color: #d8d8d8;
   border-color: #e4e3e8;
   cursor: not-allowed;
 }

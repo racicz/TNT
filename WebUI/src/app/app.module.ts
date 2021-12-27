@@ -28,6 +28,20 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { LoginComponent } from './site/login/login.component';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { SharedService } from './services/shared.service';
+import { RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings, RECAPTCHA_LANGUAGE, RECAPTCHA_SETTINGS } from 'ng-recaptcha';
+
+export function getReCaptchaKeys(): string {
+  let hostName = window.location.origin;
+  let reCaptchaKeys = [
+    {
+      key: 'localhost', 
+      value: '6LcfNiQaAAAAAL42ftB1zIKhYr__nPPFr_-DpeG5'
+    }
+  ];
+  let reCaptchaKey = reCaptchaKeys.find(rck => hostName.toLowerCase().includes(rck.key.toLowerCase()));
+  return reCaptchaKey == null ? "" : reCaptchaKey.value;
+}
 
 @NgModule({
   declarations: [
@@ -61,9 +75,22 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatTooltipModule,
     MatCheckboxModule,
     MatMomentDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: getReCaptchaKeys(),
+      } as RecaptchaSettings,
+    },
+    {
+      provide: RECAPTCHA_LANGUAGE,
+      useValue: 'sr'
+    },
+    SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

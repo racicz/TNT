@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/services/shared.service';
 
 export interface PeriodicElement {
   name: string;
@@ -45,9 +46,16 @@ export class SearchComponent implements OnInit {
   custDataSource = CUST_DATA;
   clickedRows = new Set<Customer>();
 
-  constructor() { }
+  constructor(private sharedService: SharedService) { 
+    this.sharedService.adminVisibilityChange.next(true);
+  }
 
   ngOnInit(): void {
+  }
+
+  onOrderSelected(row:Customer){
+    this.clickedRows.clear();
+    this.clickedRows.add(row);
   }
 
 }

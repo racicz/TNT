@@ -1,0 +1,73 @@
+<!-- Login FormStart -->
+<section class="section auth-section login-sec bg-cover" style="background-image: url('../../../assets/img/bg/3.jpg')">
+    <div class="container">
+      <form [formGroup]="form" 
+            class="auth-form reg light-bg mat-elevation-z8" 
+            method="post" 
+            style="background-image: url('../../../assets/img/bg/5.jpg')">
+        <h1>Registracija</h1>
+        <div class="form-group m-top-100">
+          <mat-form-field>
+            <input matInput 
+                   placeholder="E-mail" 
+                   formControlName="name">
+          </mat-form-field>
+          <small *ngIf="form.controls['name'].hasError('email') && !form.controls['name'].hasError('required')" class="text-danger support-text">Uniseti pravu e-mail adresu.</small>
+          <small *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" class="text-danger support-text">E-mail je obavezan.</small>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput 
+                   placeholder="Lozinka" 
+                   [type]="_hide ? 'password' : 'text'"
+                   formControlName="password" #inputToFocus>
+                   <mat-icon matSuffix (click)="_hide = !_hide">{{_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+          <small *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched" class="text-danger support-text">Lozinka je obavezna.</small>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+              <input matInput 
+                     placeholder="Potvrdi Lozinku" 
+                     [type]="_rehide ? 'password' : 'text'"
+                     formControlName="rePassword">
+                     <mat-icon matSuffix (click)="_rehide = !_rehide">{{_rehide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </mat-form-field>
+            <small *ngIf="form.controls['rePassword'].hasError('required') && form.controls['rePassword'].touched" class="text-danger support-text">Potvrda lozinke je obavezna.</small>
+            <small *ngIf="form.controls['rePassword'].errors?.['equalTo']" class="text-danger support-text">Lozinke se ne slazu.</small>
+          </div>
+        <div class="form-group">
+            <mat-form-field>
+              <input matInput 
+                     placeholder="Ime" 
+                     formControlName="firstName">
+            </mat-form-field>
+            <small *ngIf="form.controls['firstName'].hasError('required') && form.controls['firstName'].touched" class="text-danger support-text">Ime je obavezno.</small>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+              <input matInput 
+                     placeholder="Prezime" 
+                     formControlName="lastName">
+            </mat-form-field>
+            <small *ngIf="form.controls['lastName'].hasError('required') && form.controls['lastName'].touched" class="text-danger support-text">Prezime je obavezno.</small>
+        </div>
+        
+        <div class="form-group">
+          <div class="button-container w-100">
+            <div class="spinner-container" *ngIf="_loading">
+              <mat-spinner diameter="24"></mat-spinner>
+            </div>
+            <button class="btn-custom primary btn-block"
+                   type="submit" [disabled]="!form.valid || _loading">Registruj me</button>
+          </div>
+        </div>
+        <div class="col-12 text-center">
+            <span>Ako ste već registrovani?
+              <a class="link text-info"> Uloguj se</a>
+            </span>
+          </div>
+      </form>
+    </div>
+  </section>
+  <!-- Login Form End -->

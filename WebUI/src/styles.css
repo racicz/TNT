@@ -79,15 +79,14 @@ background-color: black !important;;
     height: 100%;
 }
 
+.auth-form.reg {
+    height: 770px;
+}
 .verybottom {
-    position: absolute;
     bottom: 0px;
-    padding-left: -15px;
   }
 
   .mat-row .mat-cell {
-    border-bottom: 1px solid transparent;
-    border-top: 1px solid transparent;
     cursor: pointer;
   }
   
@@ -95,6 +94,38 @@ background-color: black !important;;
     border-color: currentColor;
   }
   
-  .demo-row-is-clicked {
+  .row-is-clicked {
     font-weight: bold;
   }
+
+/*table columns search screen*/
+  .mat-column-actions {
+    width: 65px;
+  }
+
+  .mat-column-actions .btn-custom{
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-bottom: 0px;
+      padding-top: 5px;
+  }
+
+  .table-container {
+    max-height: 250px;
+    overflow: auto;
+ }
+
+ .table-container-order {
+    max-height: 500px;
+    overflow: auto;
+ }
+
+ .d-flex re-captcha{
+    margin: 10px;
+ }
+
+ small{
+     font-size: 80%;
+     line-height: 0px;
+ }
+

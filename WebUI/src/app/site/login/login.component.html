@@ -1,32 +1,49 @@
 <!-- Login FormStart -->
 <section class="section auth-section login-sec bg-cover" style="background-image: url('../../../assets/img/bg/3.jpg')">
     <div class="container">
-      <form class="auth-form light-bg" method="post" style="background-image: url('../../../assets/img/bg/5.jpg')">
+      <form class="auth-form light-bg mat-elevation-z8" 
+            method="post" 
+            style="background-image: url('../../../assets/img/bg/5.jpg')"
+            [formGroup]="form" 
+            (ngSubmit)="onSubmit()">
         <h1>Uloguj se</h1>
         <div class="form-group m-top-100">
           <mat-form-field>
             <input matInput 
                    placeholder="E-mail" 
-                   value="">
+                   formControlName="name">
           </mat-form-field>
+          <small *ngIf="form.controls['name'].hasError('email') && !form.controls['name'].hasError('required')" class="text-danger support-text">Uniseti pravu e-mail adresu.</small>
+          <small *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" class="text-danger support-text">E-mail je obavezan.</small>
         </div>
         <div class="form-group">
           <mat-form-field>
             <input matInput 
                    placeholder="Lozinka" 
-                   type="password"
-                   value="">
+                   [type]="_hide ? 'password' : 'text'"
+                   formControlName="password" #inputToFocus>
+                   <mat-icon matSuffix (click)="_hide = !_hide">{{_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </mat-form-field>
+          <small *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched" class="text-danger support-text">Lozinka je obavezna.</small>
         </div>
         <div class="auth-controls form-group">
           <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" id="rememberMe">
-            <label class="custom-control-label fw-400" for="rememberMe">Remember Me</label>
+            <label class="custom-control-label fw-400" for="rememberMe">Zapamti Me</label>
           </div>
           <a href="#" class="btn-link fw-400">Zaboravljena lozinka?</a>
         </div>
+        <div class="col-12 d-flex justify-content-center">
+          <re-captcha formControlName="recaptchaReactive"></re-captcha>
+        </div>
         <div class="form-group">
-          <button [routerLink]="['/admin/search']" class="btn-custom primary btn-block">Login</button>
+          <div class="button-container w-100">
+            <div class="spinner-container" *ngIf="_loading">
+              <mat-spinner diameter="24"></mat-spinner>
+            </div>
+            <button class="btn-custom primary btn-block"
+                   type="submit" [disabled]="!form.valid || _loading">Login</button>
+          </div>
         </div>
       </form>
     </div>
